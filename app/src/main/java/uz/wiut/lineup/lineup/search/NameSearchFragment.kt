@@ -8,7 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import uz.wiut.lineup.lineup.R
-import uz.wiut.lineup.lineup.search.adapters.SeachListAdapter
+import uz.wiut.lineup.lineup.model.Organization
+import uz.wiut.lineup.lineup.search.adapter.SeachListAdapter
 
 /**
  * Created by abduakhatov on 1/17/18 at 12:46 PM.
@@ -21,16 +22,25 @@ class NameSearchFragment : Fragment(){
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_search_category, container, false)
-        val adapter = SeachListAdapter(this.context, ArrayList())
-        val rvSearchList = view.findViewById<View>(R.id.rvSearchList) as RecyclerView
 
+        getData()
+        val adapter = SeachListAdapter(this.context, data)
         val llManager = LinearLayoutManager(this.context)
-
+        val rvSearchList = view.findViewById<View>(R.id.rvSearchList) as RecyclerView
         rvSearchList.layoutManager = llManager
         rvSearchList.adapter = adapter
         return view
     }
 
+    private val data = arrayListOf<Organization>(
+
+    )
+
+    fun getData() {
+        for (i in 0..orgs.size - 1) {
+            data.add(Organization(orgs[i], location[i], distance[i], openClosed[i]))
+        }
+    }
 
     private val openClosed = booleanArrayOf(true, false, true, false, true, false, true, false)
     private val orgs = arrayOf("Organization One", "Organization Two",

@@ -4,14 +4,12 @@ import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import uz.wiut.lineup.lineup.R
-import uz.wiut.lineup.lineup.search.adapters.SearchVPAdapter
+import uz.wiut.lineup.lineup.search.adapter.SearchVPAdapter
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

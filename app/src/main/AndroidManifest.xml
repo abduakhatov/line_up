@@ -19,7 +19,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".message.MessagesActivity"></activity>
+        <activity android:name=".message.MessagesActivity" />
+        <activity android:name=".my_profile.MyProfileActivity" />
+        <activity android:name=".home.OrganizationDetailsActivity" />
+        <activity android:name=".sign_up_in.SignInUpActivity"></activity>
     </application>
 
 </manifest>

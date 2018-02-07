@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.NavigationView
 import android.support.design.widget.Snackbar
+import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
@@ -13,11 +14,13 @@ import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import uz.wiut.lineup.lineup.bookmarks.fragments.BookmarkFragment
+import uz.wiut.lineup.lineup.home.fragments.HomeFragment
 import uz.wiut.lineup.lineup.message.MessagesActivity
+import uz.wiut.lineup.lineup.my_profile.MyProfileFragment
 import uz.wiut.lineup.lineup.search.SearchFragment
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -42,7 +45,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     fun initUI(){
-
+        changeFragment(HomeFragment.newInstance())
     }
 
     override fun onBackPressed() {
@@ -66,7 +69,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // as you specify a parent activity in AndroidManifest.xml.
         val id = item.itemId
 
-
         return if (id == R.id.action_settings) {
             true
         } else super.onOptionsItemSelected(item)
@@ -74,30 +76,33 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        // Handle navigation view item clicks here.
         val id = item.itemId
 
         if (id == R.id.nav_home) {
-
+            changeFragment(HomeFragment.newInstance())
         } else if (id == R.id.nav_search) {
-            supportFragmentManager
-                    .beginTransaction()
-                    .add(R.id.flMainContent, SearchFragment.newInstance(), "searchFragment")
-                    .commit()
+            changeFragment(SearchFragment.newInstance())
         } else if (id == R.id.nav_bookmark) {
-
+            changeFragment(BookmarkFragment.newInstance())
         } else if (id == R.id.nav_my_profile) {
-
-        } else if (id == R.id.nav_my_profile) {
-
+            changeFragment(MyProfileFragment.newInstance())
         } else if (id == R.id.nav_message) {
             startActivity(Intent(this, MessagesActivity::class.java))
         }
-
 
         val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
         drawer.closeDrawer(GravityCompat.START)
         return true
     }
+
+    private fun changeFragment(fragment: Fragment) {
+        if (fragment != null) {
+            supportFragmentManager
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.flMainContent, fragment)
+                    .commit()
+        }
+    }
+
 }
-// asd asd asd

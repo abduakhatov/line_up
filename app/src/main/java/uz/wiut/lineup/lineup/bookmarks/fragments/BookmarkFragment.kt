@@ -1,4 +1,5 @@
-package uz.wiut.lineup.lineup.search
+package uz.wiut.lineup.lineup.bookmarks.fragments
+
 
 import android.os.Bundle
 import android.support.design.widget.TabLayout
@@ -11,16 +12,14 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import uz.wiut.lineup.lineup.R
 import uz.wiut.lineup.lineup.search.adapter.SearchVPAdapter
-import uz.wiut.lineup.lineup.search.fragments.CategorySearchFragment
-import uz.wiut.lineup.lineup.search.fragments.MapSearchFragment
-import uz.wiut.lineup.lineup.search.fragments.NameSearchFragment
 
-class SearchFragment : Fragment() {
+class BookmarkFragment : Fragment() {
 
     @BindView(R.id.vpSearch)
     lateinit var vpSearch: ViewPager
     @BindView(R.id.tlSearch)
     lateinit var tlSearch: TabLayout
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,12 +31,9 @@ class SearchFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_search, container, false) as View
         ButterKnife.bind(this, view)
         val adapter = SearchVPAdapter(fragmentManager)
-
-        adapter.addFragment(CategorySearchFragment(), "Category")
-        adapter.addFragment(NameSearchFragment(), "Name")
-        adapter.addFragment(MapSearchFragment(), "Map")
+        adapter.addFragment(SavedBookmarkFragment(), "Saved")
+        adapter.addFragment(HistoryOfBookmarksFragment(), "History")
         vpSearch.adapter = adapter
-
         tlSearch.setupWithViewPager(vpSearch)
 
         return view
@@ -49,17 +45,7 @@ class SearchFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance()  = SearchFragment()
+        fun newInstance() = BookmarkFragment()
     }
+
 }
-
-
-
-
-
-
-
-
-
-
-

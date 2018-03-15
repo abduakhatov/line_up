@@ -9,6 +9,5 @@ class Constants {
         val CLOSED = "Closed"
         val DEBUG = "==========>"
         val SIGN_CLICK_LISTENER = "SignInClickListener"
-
     }
 }

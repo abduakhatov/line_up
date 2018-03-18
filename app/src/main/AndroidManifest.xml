@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="uz.wiut.lineup.lineup">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <application
         android:name=".dagger.inject.App"
         android:allowBackup="true"
@@ -9,10 +12,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        >
+        android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.test.TestActivity"
+            android:name=".ui.sign_up_in.SignInUpActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -21,10 +23,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="uz.wiut.lineup.lineup.ui.message.MessagesActivity" />
-        <!--<activity android:name="uz.wiut.lineup.lineup.ui.my_profile.MyProfileActivity" />-->
-        <activity android:name="uz.wiut.lineup.lineup.ui.home.OrganizationDetailsActivity" />
-        <activity android:name="uz.wiut.lineup.lineup.ui.sign_up_in.SignInUpActivity"></activity>
+        <activity android:name=".ui.message.MessagesActivity" />
+        <!-- <activity android:name="uz.wiut.lineup.lineup.ui.my_profile.MyProfileActivity" /> -->
+        <activity android:name=".ui.home.OrganizationDetailsActivity" />
     </application>
 
 </manifest>

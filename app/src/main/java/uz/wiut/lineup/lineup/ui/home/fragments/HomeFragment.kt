@@ -21,7 +21,7 @@ class HomeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-        var rvActiveQueueList = view.findViewById(R.id.rvActiveQueueList) as RecyclerView
+        var rvActiveQueueList : RecyclerView = view.findViewById(R.id.rvActiveQueueList)
         rvActiveQueueList.visibility = View.VISIBLE
         getData()
         val adapter = ActiveListAdapter(this.context, data)

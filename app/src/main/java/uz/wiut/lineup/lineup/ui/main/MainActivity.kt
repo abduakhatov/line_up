@@ -1,5 +1,6 @@
 package uz.wiut.lineup.lineup.ui.main
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
@@ -18,22 +19,28 @@ import uz.wiut.lineup.lineup.R
 import uz.wiut.lineup.lineup.ui.bookmarks.fragments.BookmarkFragment
 import uz.wiut.lineup.lineup.ui.common.BaseActivity
 import uz.wiut.lineup.lineup.ui.home.fragments.HomeFragment
+import uz.wiut.lineup.lineup.ui.main.pv.MainActivityPresenterImpl
+import uz.wiut.lineup.lineup.ui.main.pv.MainActivityView
 import uz.wiut.lineup.lineup.ui.message.MessagesActivity
 import uz.wiut.lineup.lineup.ui.my_profile.MyProfileFragment
 import uz.wiut.lineup.lineup.ui.search.SearchFragment
+import uz.wiut.lineup.lineup.ui.test.presenter.TestActivityPresenterImpl
+import javax.inject.Inject
 
-class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, MainActivityView{
 
-    companion object {
-        private val TAG_EXAMPLE_4 = "MainActivity.example_4"
-        private val TAG_EXAMPLE_5 = "MainActivity.example_5"
+    @Inject
+    lateinit var presenter : MainActivityPresenterImpl
+
+    fun start(context: Context) {
+        navigator.startActivity(this, this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
-//        navigator.setSupportActionBar(toolbar)
+        setSupportActionBar(toolbar)
         val fab = findViewById<View>(R.id.fab) as FloatingActionButton
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -95,8 +102,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         } else if (id == R.id.nav_my_profile) {
             changeFragment(MyProfileFragment.newInstance())
         } else if (id == R.id.nav_message) {
-            //startActivity(Intent(this, MessagesActivity::class.java))
-//            navigator.startActivity(this, MessagesActivity())
+            navigator.startActivity(this, MainActivity())
         }
 
         val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout

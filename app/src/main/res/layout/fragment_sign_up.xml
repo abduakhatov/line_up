@@ -32,8 +32,7 @@
             android:id="@+id/edPhoen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Phone number"
-            android:inputType="textPassword" />
+            android:hint="Phone number" />
 
         <TextView
             android:id="@+id/tvPassword"
@@ -49,7 +48,17 @@
             android:inputType="textPassword" />
 
     </LinearLayout>
-
+    <EditText
+        android:id="@+id/etVarif"
+        android:layout_above="@+id/btnVerify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btnVerify"
+        android:layout_above="@+id/btnSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Verify" />
     <Button
         android:id="@+id/btnSignUp"
         android:layout_width="match_parent"

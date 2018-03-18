@@ -1,16 +1,25 @@
 package uz.wiut.lineup.lineup.ui.sign_up_in
 
+import android.app.Activity
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
+import android.os.Parcelable
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
-import uz.wiut.lineup.lineup.ui.main.MainActivity
+import android.util.Log
+import com.google.android.gms.common.api.GoogleApiClient
 import uz.wiut.lineup.lineup.R
+import uz.wiut.lineup.lineup.ui.main.MainActivity
 import uz.wiut.lineup.lineup.ui.sign_up_in.fragments.SignInFragment
 import uz.wiut.lineup.lineup.ui.sign_up_in.fragments.SignUpFragment
+import uz.wiut.lineup.lineup.utils.Constants
 
 
 class SignInUpActivity : AppCompatActivity(), SignInFragment.OnSignInUpListener {
+
+    private val mCredentialsApiClient: GoogleApiClient? = null
+    private val RC_HINT = 1000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +45,6 @@ class SignInUpActivity : AppCompatActivity(), SignInFragment.OnSignInUpListener 
         val intent = Intent(this, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
-
     }
 
     private fun initUI() {

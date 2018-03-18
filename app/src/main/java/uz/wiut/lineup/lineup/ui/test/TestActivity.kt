@@ -1,10 +1,14 @@
 package uz.wiut.lineup.lineup.ui.test
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import junit.framework.Test
 import uz.wiut.lineup.lineup.ui.common.BaseActivity
+import uz.wiut.lineup.lineup.ui.message.MessagesActivity
 import uz.wiut.lineup.lineup.ui.test.presenter.TestActivityPresenterImpl
 import uz.wiut.lineup.lineup.ui.test.presenter.TestActivityPresenterView
 import javax.inject.Inject
@@ -16,6 +20,10 @@ class TestActivity : BaseActivity(), TestActivityPresenterView {
     @Inject
     lateinit var presenter : TestActivityPresenterImpl
 
+    fun start(context: Context) {
+        navigator.startActivity(this, this)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         var tv : TextView = TextView(this)
@@ -23,12 +31,12 @@ class TestActivity : BaseActivity(), TestActivityPresenterView {
         tv.setOnClickListener(View.OnClickListener {
             // todo
             presenter.touch()
+            navigator.startActivity(this, this)
         })
         setContentView(tv)
     }
 
     override fun callPhone() {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         Toast.makeText(this, "call helloo", Toast.LENGTH_LONG).show()
     }
 

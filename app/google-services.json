@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "155889892836",
+    "firebase_url": "https://onlinia-54a4b.firebaseio.com",
+    "project_id": "onlinia-54a4b",
+    "storage_bucket": "onlinia-54a4b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:155889892836:android:361f6bf145b673e3",
+        "android_client_info": {
+          "package_name": "uz.wiut.lineup.lineup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "155889892836-nscshha6prs1mvsntue803avobikc8ti.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uz.wiut.lineup.lineup",
+            "certificate_hash": "33eb7d4d803c8cb8b1efe99162736c9f2ec58df0"
+          }
+        },
+        {
+          "client_id": "155889892836-j35kcg9606b7qta17gnhne6ab2pq249q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uz.wiut.lineup.lineup",
+            "certificate_hash": "67112cde8e87ae5f370139346b64ab62c43da9bf"
+          }
+        },
+        {
+          "client_id": "155889892836-2849ijrl4fgvkjiml2kk503hrt9m50ng.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoGDQU9GL1rHMQstn3aXuRaW2GBHfiSn4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "155889892836-2849ijrl4fgvkjiml2kk503hrt9m50ng.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

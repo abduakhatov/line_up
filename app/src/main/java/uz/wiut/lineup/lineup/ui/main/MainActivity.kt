@@ -2,11 +2,15 @@ package uz.wiut.lineup.lineup.ui.main
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
+import android.support.annotation.ColorRes
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.NavigationView
 import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
@@ -15,6 +19,9 @@ import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import butterknife.BindView
+import butterknife.BindViews
+import butterknife.ButterKnife
 import uz.wiut.lineup.lineup.R
 import uz.wiut.lineup.lineup.ui.bookmarks.fragments.BookmarkFragment
 import uz.wiut.lineup.lineup.ui.common.BaseActivity
@@ -26,11 +33,21 @@ import uz.wiut.lineup.lineup.ui.my_profile.MyProfileFragment
 import uz.wiut.lineup.lineup.ui.search.SearchFragment
 import uz.wiut.lineup.lineup.ui.test.presenter.TestActivityPresenterImpl
 import javax.inject.Inject
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
+import com.aurelhubert.ahbottomnavigation.notification.AHNotification
+import kotlinx.android.synthetic.main.content_main.*
+
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, MainActivityView{
 
     @Inject
     lateinit var presenter : MainActivityPresenterImpl
+
+    @BindView(R.id.bottom_navigation)
+    lateinit var bottomNavigation: AHBottomNavigation
+
+    private var notificationVisible : Boolean = false
 
     fun start(context: Context) {
         navigator.startActivity(this, this)
@@ -39,6 +56,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        ButterKnife.bind(this)
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
         val fab = findViewById<View>(R.id.fab) as FloatingActionButton
@@ -60,7 +78,54 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     fun initUI(){
-        changeFragment(HomeFragment.newInstance())
+//        changeFragment(HomeFragment.newInstance())
+
+        val item1 = AHBottomNavigationItem("tab_1", R.drawable.ic_pass)
+        val item2 = AHBottomNavigationItem("tab_2", R.drawable.ic_pass)
+        val item3 = AHBottomNavigationItem("tab_3", R.drawable.ic_pass)
+        val item4 = AHBottomNavigationItem("tab_4", R.drawable.ic_pass)
+
+        bottomNavigation.addItem(item1);
+        bottomNavigation.addItem(item2);
+        bottomNavigation.addItem(item3);
+        bottomNavigation.setCurrentItem(0)
+        bottomNavigation.setOnTabSelectedListener(object:AHBottomNavigation.OnTabSelectedListener{
+            override fun onTabSelected(position:Int, wasSelected:Boolean):Boolean {
+                //TODO: update Fragment here
+                // remove notification badge
+                val lastItemPos = bottomNavigation.getItemsCount() - 1
+                if (notificationVisible && position == lastItemPos)
+                    bottomNavigation.setNotification(AHNotification(), lastItemPos)
+                return true
+            }
+        })
+        bottomNavigation.setDefaultBackgroundColor(Color.WHITE)
+        bottomNavigation.setAccentColor(fetchColor(R.color.grad_red))
+        bottomNavigation.setInactiveColor(fetchColor(R.color.grad_blue_light))
+        bottomNavigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW)
+        bottomNavigation.setTranslucentNavigationEnabled(true)
+        bottomNavigation.setBehaviorTranslationEnabled(true);
+        createFakeNotification()
+
+    }
+
+    private fun createFakeNotification() {
+        Handler().postDelayed({
+            var notification = AHNotification.Builder()
+                    .setText("1")
+                    .setBackgroundColor(Color.YELLOW)
+                    .setTextColor(Color.BLACK)
+                    .build();
+            // Adding notification to last item.
+
+            bottomNavigation.setNotification(notification, bottomNavigation.getItemsCount() - 1);
+
+            notificationVisible = true;
+        }, 1000)
+   }
+
+    private fun fetchColor(@ColorRes color: Int): Int {
+        return ContextCompat.getColor(this, color)
     }
 
     override fun onBackPressed() {

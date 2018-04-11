@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/llGradContainer"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@color/colorAccent"
+        android:orientation="vertical"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llWorkingContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/llGradContainer"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="-60dp"
+        android:background="@drawable/round_border"
+        android:orientation="vertical"
+        android:paddingBottom="55dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:paddingTop="25dp">
+
+        <uz.wiut.component.utils.ui.CustomEditText
+            android:id="@+id/edName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hideRightContainer="true"
+            app:hint="Verification Code" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnVeify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/llWorkingContainer"
+        android:layout_alignRight="@+id/llWorkingContainer"
+        android:layout_below="@+id/llWorkingContainer"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="-23dp"
+        android:background="@drawable/circle_button"
+        android:fontFamily="sans-serif-light"
+        android:inputType="textCapSentences"
+        android:text="Verify"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
+
+
+    <LinearLayout
+        android:layout_marginBottom="10dp"
+        android:layout_above="@+id/llNotNow"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvSignInBtnTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Already have an account? "
+            android:textColor="@color/gray_text"
+            android:textSize="13sp"
+            />
+
+        <TextView
+            android:id="@+id/tvSignInBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign In"
+            android:textColor="@color/grad"
+            android:textSize="13sp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llNotNow"
+        android:layout_marginBottom="15dp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvNotNowBtnTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Do not want to create? "
+            android:textColor="@color/gray_text"
+            android:textSize="13sp"
+            />
+
+        <TextView
+            android:id="@+id/tvNotNowBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Later"
+            android:textColor="@color/grad"
+            android:textSize="13sp"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

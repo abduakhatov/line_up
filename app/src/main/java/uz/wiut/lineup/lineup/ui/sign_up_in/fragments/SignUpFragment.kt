@@ -1,54 +1,38 @@
 package uz.wiut.lineup.lineup.ui.sign_up_in.fragments
 
 
-import android.Manifest
+import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
-import uz.wiut.lineup.lineup.R
-import uz.wiut.lineup.lineup.utils.Constants
-import android.widget.Toast
-import android.content.ContentValues.TAG
-import android.support.annotation.NonNull
-import com.google.android.gms.tasks.OnCompleteListener
-import android.R.attr.password
-import android.content.Context
-import android.content.pm.PackageManager
-import android.support.v4.app.ActivityCompat
-import android.telephony.TelephonyManager
-import android.util.Log
-import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
-import org.jetbrains.annotations.NotNull
-import java.util.concurrent.TimeUnit
-import android.text.TextUtils
-
-
+import uz.wiut.component.utils.ui.CustomEditText
+import uz.wiut.lineup.lineup.R
+import uz.wiut.lineup.lineup.utils.Constants
 
 
 class SignUpFragment : Fragment() {
     @BindView(R.id.edName)
-    lateinit var etName: EditText
-//    @BindView(R.id.edPhoen)
-    lateinit var etPhoen: EditText
-//    @BindView(R.id.edPassword)
-    lateinit var etPassword: EditText
-    @BindView(R.id.etVarif)
-    lateinit var etVarif: EditText
+    lateinit var etName: CustomEditText
+    @BindView(R.id.edPhone)
+    lateinit var etPhoen: CustomEditText
+    @BindView(R.id.edPassword)
+    lateinit var etPassword: CustomEditText
+//    @BindView(R.id.etVarif)
+//    lateinit var etVarif: EditText
     @BindView(R.id.btnSignUp)
     lateinit var btnSignUp: Button
-    @BindView(R.id.btnVerify)
-    lateinit var btnVerify: Button
+//    @BindView(R.id.btnVerify)
+//    lateinit var btnVerify: Button
 
     private var listener: SignInFragment.OnSignInUpListener? = null
     private var mAuth: FirebaseAuth? = null
@@ -74,8 +58,8 @@ class SignUpFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_sign_up, container, false) as View
         ButterKnife.bind(this, view)
-        etPhoen = view.findViewById<View>(R.id.edPhoen) as EditText
-        etPassword = view.findViewById<View>(R.id.edPassword) as EditText
+        etPhoen = view.findViewById<View>(R.id.edPhone) as CustomEditText
+        etPassword = view.findViewById<View>(R.id.edPassword) as CustomEditText
         mCallbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks(){
             override fun onVerificationCompleted(credential: PhoneAuthCredential) {
                 Log.d(TAG, "onVerificationCompleted:" + credential)
@@ -112,16 +96,17 @@ class SignUpFragment : Fragment() {
     @OnClick(R.id.btnSignUp)
     fun signUpClicked() {
 
-        var phone = etPhoen.text.toString()
-        var pass = etPassword.text.toString()
+//        var phone = etPhoen.text.toString()
+//        var pass = etPassword.text.toString()
 
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                phone,                  // Phone number to verify
-                60,                  // Timeout duration
-                TimeUnit.SECONDS,       // Unit of timeout
-                this.activity,          // Activity (for callback binding)
-                mCallbacks
-        );
+        //todo uncomment this later, IMPORTANT PART
+//        PhoneAuthProvider.getInstance().verifyPhoneNumber(
+//                phone,                  // Phone number to verify
+//                60,                  // Timeout duration
+//                TimeUnit.SECONDS,       // Unit of timeout
+//                this.activity,          // Activity (for callback binding)
+//                mCallbacks
+//        );
     }
 
     private fun verifyPhoneNumberWithCode(verificationId:String , code:String ) {
@@ -149,10 +134,11 @@ class SignUpFragment : Fragment() {
                 }
     }
 
-    @OnClick(R.id.btnVerify)
-    fun veifyClicked() {
-        verifyPhoneNumberWithCode(mVerificationId, etVarif.text.toString());
-    }
+    // TODO IMPORTANT
+//    @OnClick(R.id.btnVerify)
+//    fun veifyClicked() {
+//        verifyPhoneNumberWithCode(mVerificationId, etVarif.text.toString());
+//    }
 
 
     companion object {

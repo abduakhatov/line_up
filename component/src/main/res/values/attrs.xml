@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CustomEditText">
+        <!--Edittext-->
+        <attr name="title" format="string" />
+        <attr name="hint" format="string" />
+        <attr name="isPassword" format="boolean" />
+
+        <!--Main Container-->
+        <attr name="hideRightContainer" format="boolean" />
+
+        <!--Right Container Icon-->
+        <attr name="iconHide" format="boolean"/>
+        <attr name="setIcon" format="reference"/>
+
+        <!--Right Container Text-->
+        <attr name="setRigthText" format="string"/>
+
+    </declare-styleable>
+
+</resources>

@@ -2,12 +2,13 @@ package uz.wiut.lineup.lineup.ui.search.adapter
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
+import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.app.FragmentStatePagerAdapter
 
 /**
  * Created by abduakhatov on 1/19/18 at 1:14 AM.
  */
-class SearchVPAdapter(manager: FragmentManager) : FragmentStatePagerAdapter(manager) {
+class SearchVPAdapter(manager: FragmentManager) : FragmentPagerAdapter(manager) {//FragmentStatePagerAdapter(manager) {
     private val mFragmentList = ArrayList<Fragment>()
     private val mFragmentTitleList = ArrayList<String>()
 

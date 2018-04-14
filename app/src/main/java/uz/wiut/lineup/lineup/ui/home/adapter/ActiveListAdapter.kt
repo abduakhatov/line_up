@@ -29,19 +29,19 @@ class ActiveListAdapter(private val context: Context, private val list: List<Reg
         var org: RegisteredOrganization = list.get(position)
         var organization = org.organization
 
-        holder?.tvNameOfOrg?.text = organization.organization
-        holder?.tvLocation?.text = organization.location
-        holder?.tvDistance?.text = "%.1f".format(organization.distance).toString() + " km"
-        holder?.tvOpenClosed?.text = if (organization.openClosed) Constants.OPEN else Constants.CLOSED
-
-        holder?.tvNumOnQueueValue?.text = org.numberOnQueue.toString()
-        holder?.tvWaitingTime?.text = org.waitingTime.toString()
-        holder?.tvApproximateTimeValue?.text = org.approximateTime.toString()
-
-        holder!!.cvActiveQueueItem.setOnClickListener({ view ->
-            Log.d("*******", "ActiveList adapter -> " + position)
-            context.startActivity(Intent(context, OrganizationDetailsActivity::class.java))
-        })
+//        holder?.tvNameOfOrg?.text = organization.organization
+//        holder?.tvLocation?.text = organization.location
+//        holder?.tvDistance?.text = "%.1f".format(organization.distance).toString() + " km"
+//        holder?.tvOpenClosed?.text = if (organization.openClosed) Constants.OPEN else Constants.CLOSED
+//
+//        holder?.tvNumOnQueueValue?.text = org.numberOnQueue.toString()
+//        holder?.tvWaitingTime?.text = org.waitingTime.toString()
+//        holder?.tvApproximateTimeValue?.text = org.approximateTime.toString()
+//
+//        holder!!.cvActiveQueueItem.setOnClickListener({ view ->
+//            Log.d("*******", "ActiveList adapter -> " + position)
+//            //context.startActivity(Intent(context, OrganizationDetailsActivity::class.java))
+//        })
 
         // TODO set on click listner with pop-up menu
     }
@@ -50,26 +50,35 @@ class ActiveListAdapter(private val context: Context, private val list: List<Reg
 
 
     inner class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-        var tvNameOfOrg: TextView
-        var tvLocation: TextView
-        var tvDistance: TextView
-        var tvOpenClosed: TextView
-
-        var tvNumOnQueueValue: TextView
-        var tvWaitingTime: TextView
-        var tvApproximateTimeValue: TextView
-        var cvActiveQueueItem: CardView
+//        var tvNameOfOrg: TextView
+//        var tvLocation: TextView
+//        var tvDistance: TextView
+//        var tvOpenClosed: TextView
+//
+//        var tvNumOnQueueValue: TextView
+//        var tvWaitingTime: TextView
+//        var tvApproximateTimeValue: TextView
+//        var cvActiveQueueItem: CardView
 
         init {
-            tvNameOfOrg = v.findViewById(R.id.tvNameOfOrg)
-            tvLocation = v.findViewById(R.id.tvLocation)
-            tvDistance = v.findViewById(R.id.tvDistance)
-            tvOpenClosed = v.findViewById(R.id.tvOpenClosed)
-
-            tvNumOnQueueValue = v.findViewById(R.id.tvNumOnQueueValue)
-            tvWaitingTime = v.findViewById(R.id.tvWaitingTime)
-            tvApproximateTimeValue = v.findViewById(R.id.tvApproximateTimeValue)
-            cvActiveQueueItem = v.findViewById(R.id.cvActiveQueueItem)
+//            tvNameOfOrg = v.findViewById(R.id.tvNameOfOrg)
+//            tvLocation = v.findViewById(R.id.tvLocation)
+//            tvDistance = v.findViewById(R.id.tvDistance)
+//            tvOpenClosed = v.findViewById(R.id.tvOpenClosed)
+//
+//            tvNumOnQueueValue = v.findViewById(R.id.tvNumOnQueueValue)
+//            tvWaitingTime = v.findViewById(R.id.tvWaitingTime)
+//            tvApproximateTimeValue = v.findViewById(R.id.tvApproximateTimeValue)
+//            cvActiveQueueItem = v.findViewById(R.id.cvActiveQueueItem)
         }
+
+
+//        cvActiveQueueItem
+//        tvLocation
+//        tvOpenClosed
+//        ivBookmark
+//        tvNameOfOrg
+//        tvApproximateTimeTitle
+//        tvWaitingTime
     }
 }

@@ -28,7 +28,6 @@ class SavedBookmarkFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_search_category, container, false)
         ButterKnife.bind(this, view)
-
         initAdapter()
         return view
     }

@@ -26,6 +26,7 @@
         <activity android:name=".ui.message.MessagesActivity" />
         <!-- <activity android:name="uz.wiut.lineup.lineup.ui.my_profile.MyProfileActivity" /> -->
         <activity android:name=".ui.home.OrganizationDetailsActivity" />
+        <!-- <activity android:name=".ui.test.nav_bar_test.Main2Activity"></activity> -->
     </application>
 
 </manifest>

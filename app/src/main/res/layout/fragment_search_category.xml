@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.RecyclerView
+<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rvSearchList"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:clipToPadding="false"
     android:paddingBottom="5dp"
     android:paddingTop="5dp"
-    android:layout_height="match_parent"/>
+    android:scrollbars="vertical" />

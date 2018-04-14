@@ -16,26 +16,52 @@
         app:contentInsetStart="1dp"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <TextView
-            android:id="@+id/tvToolboxTitle"
-            android:text="Main Activity"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:visibility="gone"
+                android:src="@drawable/ic_menu_share"/>
+
+            <TextView
+                android:id="@+id/tvToolboxTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="sans-serif-light"
+                android:text="Main Activity"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </RelativeLayout>
 
     </android.support.v7.widget.Toolbar>
 
-    <FrameLayout
-        android:id="@+id/flMainContent"
+    <!--<FrameLayout-->
+        <!--android:id="@+id/flMainContent"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_above="@+id/bottom_navigation"-->
+        <!--android:layout_below="@+id/toolbar"-->
+        <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"/>-->
+
+    <uz.wiut.component.utils.ui.NoSwipePager
+        android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar"
         android:layout_above="@+id/bottom_navigation"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        android:layout_below="@+id/toolbar"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:background="#EFEFEF"/>
+
 
     <com.aurelhubert.ahbottomnavigation.AHBottomNavigation
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_alignParentBottom="true"
         android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"/>
 </RelativeLayout>

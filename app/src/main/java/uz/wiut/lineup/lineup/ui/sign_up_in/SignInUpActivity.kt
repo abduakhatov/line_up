@@ -33,7 +33,7 @@ class SignInUpActivity : AppCompatActivity(), SignInFragment.OnSignInUpListener 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.content_main)
+        setContentView(R.layout.activity_home)
         ButterKnife.bind(this)
         initUI()
     }

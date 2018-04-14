@@ -29,7 +29,6 @@ class CategorySearchFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_search_category, container, false)
         ButterKnife.bind(this, view)
-
         initAdapter()
         return view
     }
@@ -39,6 +38,12 @@ class CategorySearchFragment : Fragment() {
         initAdapter()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        rvSearchList.clearOnChildAttachStateChangeListeners()
+        rvSearchList.layoutManager = null
+        rvSearchList.adapter = null
+    }
 
     private fun initAdapter() {
         val adapter = SeachListAdapter(this.context, getData())

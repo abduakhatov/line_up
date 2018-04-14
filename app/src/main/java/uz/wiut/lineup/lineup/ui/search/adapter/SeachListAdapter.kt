@@ -18,16 +18,16 @@ class SeachListAdapter(private val context: Context, private val list: List<Orga
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder
             = ViewHolder(LayoutInflater.from(parent?.context)
-            .inflate(R.layout.item_search_list, parent, false))
+            .inflate(R.layout.item_home_list, parent, false))
 
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-        var org: Organization = list.get(position)
-        holder?.tvNameOfOrg?.text = org.organization
-        holder?.tvLocation?.text = org.location
-        holder?.tvDistance?.text = "%.1f".format(org.distance).toString() + " km"
-        holder?.tvOpenClosed?.text = if (org.openClosed) Constants.OPEN else Constants.CLOSED
-        // TODO set on click listner with pop-up menu
+//        var org: Organization = list.get(position)
+//        holder?.tvNameOfOrg?.text = org.organization
+//        holder?.tvLocation?.text = org.location
+//        holder?.tvDistance?.text = "%.1f".format(org.distance).toString() + " km"
+//        holder?.tvOpenClosed?.text = if (org.openClosed) Constants.OPEN else Constants.CLOSED
+//        // TODO set on click listner with pop-up menu
         // holder.overflowImageView.setOnClickListener{showPopupMenu(holder.overflowImageView)};
     }
 //
@@ -44,16 +44,16 @@ class SeachListAdapter(private val context: Context, private val list: List<Orga
 
 
     inner class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-        var tvNameOfOrg: TextView
-        var tvLocation: TextView
-        var tvDistance: TextView
-        var tvOpenClosed: TextView
+//        var tvNameOfOrg: TextView
+//        var tvLocation: TextView
+//        var tvDistance: TextView
+//        var tvOpenClosed: TextView
 
         init {
-            tvNameOfOrg = v.findViewById(R.id.tvNameOfOrg)
-            tvLocation = v.findViewById(R.id.tvLocation)
-            tvDistance = v.findViewById(R.id.tvDistance)
-            tvOpenClosed = v.findViewById(R.id.tvOpenClosed)
+//            tvNameOfOrg = v.findViewById(R.id.tvNameOfOrg)
+//            tvLocation = v.findViewById(R.id.tvLocation)
+//            tvDistance = v.findViewById(R.id.tvDistance)
+//            tvOpenClosed = v.findViewById(R.id.tvOpenClosed)
         }
     }
 

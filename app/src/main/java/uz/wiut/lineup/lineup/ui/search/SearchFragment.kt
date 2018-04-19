@@ -42,7 +42,7 @@ class SearchFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_search, container, false) as View
         ButterKnife.bind(this, view)
-        val adapter = SearchVPAdapter(fragmentManager)
+        val adapter = SearchVPAdapter(childFragmentManager)
 
         adapter.addFragment(CategorySearchFragment(), "Category")
         adapter.addFragment(NameSearchFragment(), "Name")

@@ -1,93 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-        <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/collapsing_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:contentScrim="@color/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/ic_launcher_background"
-                android:scaleType="fitXY"
-                app:layout_collapseMode="parallax" />
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin" />
-
-        </android.support.design.widget.CollapsingToolbarLayout>
-
-    </android.support.design.widget.AppBarLayout>
-
-    <android.support.v4.widget.NestedScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/llGradContainer"
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:layout_marginLeft="-40dp"
+            android:layout_marginRight="-40dp"
+            android:layout_marginTop="-50dp"
+            android:background="@drawable/cyrcle_half"
+            android:orientation="vertical" />
+
+        <FrameLayout
+            android:id="@+id/flPhotoContainer"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignBottom="@+id/llGradContainer"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="-80dp"
+            android:background="@drawable/just_cycle">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:background="@drawable/ic_menu_share"
+                android:backgroundTint="@color/grad"
+                android:elevation="4dp" />
+
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/flPhotoContainer"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/edName"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Name" />
-
-            <EditText
-                android:id="@+id/edLastName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Last Name" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Switch
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="User Mode" />
+                android:layout_marginBottom="20dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:id="@+id/tvName"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Client" />
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="sans-serif"
+                    android:text="Aziz(a) Abdullaev(a)"
+                    android:textColor="@android:color/black"
+                    android:textSize="22sp" />
 
-            </LinearLayout>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/tvName"
+                    android:layout_alignTop="@+id/tvName"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/tvName"
+                    android:foregroundGravity="center"
+                    android:src="@drawable/ic_menu_share" />
+            </RelativeLayout>
 
-            <Button
+            <uz.wiut.component.utils.ui.CustomEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Notifications" />
+                android:visibility="gone"
+                app:hideRightContainer="true"
+                app:hint="Name"
+                app:iconHide="true"
+                app:setRigthText="Aziz(a) Abdullaev(a)" />
 
-            <Button
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Log out" />
+                android:fontFamily="sans-serif"
+                android:text="Private Details"
+                android:textColor="@color/dark_gray_text"
+                android:textSize="16sp" />
+
+            <uz.wiut.component.utils.ui.CustomEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hideRightContainer="true"
+                app:hint="+99890 123 4567"
+                app:iconHide="true"
+                app:setRigthText="Phone Number" />
+
+            <uz.wiut.component.utils.ui.CustomEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hideRightContainer="true"
+                app:hint="my_pass"
+                app:iconHide="true"
+                app:isPassword="false"
+                app:setRigthText="Password" />
+
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/llWorkingContainer"
+                android:layout_alignRight="@+id/llWorkingContainer"
+                android:layout_below="@+id/llWorkingContainer"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/circle_button"
+                android:fontFamily="sans-serif-light"
+                android:inputType="textCapSentences"
+                android:text="Save"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+
+
         </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
 
-
-</android.support.design.widget.CoordinatorLayout>
+    </LinearLayout>
+</ScrollView>

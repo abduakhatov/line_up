@@ -27,5 +27,4 @@ abstract class TestActivityModule {
     @Binds
     @PerActivity
     abstract fun bindTestActivityPresenter (presenterImpl: TestActivityPresenterImpl) : TestActivityPresenter
-
 }

@@ -19,12 +19,12 @@ import uz.wiut.component.R
  * Created by Shohruh on 22-Mar-18.
  */
 
-class CustomEditText @JvmOverloads
+class CustomEditText
 constructor(
         context: Context,
         attrs: AttributeSet? = null,
         defStyleAttr: Int = 0)
-    : FrameLayout (context, attrs, defStyleAttr), View.OnClickListener {
+    : FrameLayout(context, attrs, defStyleAttr), View.OnClickListener {
 
     private lateinit var tvTitle: TextView
     private lateinit var rlBody: RelativeLayout
@@ -42,17 +42,17 @@ constructor(
             var typedArr = context.theme.obtainStyledAttributes(attrs, R.styleable.CustomEditText, 0, 0)
             try {
                 var title = typedArr.getString(R.styleable.CustomEditText_title)
-                if (title == null || title == ""){
+                if (title == null || title == "") {
                     var hint = typedArr.getString(R.styleable.CustomEditText_hint)
-                    tvContent.hint = if(hint != null) hint else "Hint"
+                    tvContent.hint = if (hint != null) hint else "Hint"
                     tvContent.text = null
-                } else{
+                } else {
                     tvContent.hint = null
                     tvContent.text = title
                 }
 
                 var rightContVisblty = typedArr.getBoolean(R.styleable.CustomEditText_hideRightContainer, false)
-                if (rightContVisblty){
+                if (rightContVisblty) {
                     flRightView.visibility = View.VISIBLE
 
                     var iconVisblt = typedArr.getBoolean(R.styleable.CustomEditText_iconHide, false)
@@ -68,39 +68,16 @@ constructor(
 //                        ivIcon.setImageDrawable(if(iconSrc!=null) iconSrc else ivIcon.drawable)
                         tvEditTextValue.visibility = View.GONE
                     }
-                }
-                else {
+                } else {
                     flRightView.visibility = GONE
                 }
 
-                var inputType = if ( typedArr.getBoolean(R.styleable.CustomEditText_setIcon, false) ) InputType.TYPE_TEXT_VARIATION_PASSWORD else InputType.TYPE_CLASS_TEXT
-                tvContent.inputType = inputType
+                tvContent.inputType = if (typedArr.getBoolean(R.styleable.CustomEditText_isPassword, false)) InputType.TYPE_TEXT_VARIATION_PASSWORD else InputType.TYPE_CLASS_TEXT
             } finally {
                 typedArr.recycle()
             }
         }
     }
-
-//    constructor(context: Context) : super(context) {
-//        addView(LayoutInflater.from(context).inflate(R.layout.view_custom_edittext, null, false))
-////        init()
-//    }
-//
-//    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
-//        addView(LayoutInflater.from(context).inflate(R.layout.view_custom_edittext, null, false))
-////        init()
-//    }
-//
-//    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
-//        addView(LayoutInflater.from(context).inflate(R.layout.view_custom_edittext, null, false))
-////        init()
-//    }
-//
-//    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-//    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes) {
-//        addView(LayoutInflater.from(context).inflate(R.layout.view_custom_edittext, null, false))
-////        init()
-//    }
 
     private fun init() {
         rlBody = findViewById(R.id.rlBody)
@@ -125,8 +102,12 @@ constructor(
         this.listener = listener
     }
 
-    fun setIcon(){
+    fun setIcon() {
         ivIcon.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_pass));
+    }
+
+    fun setHeight(height: Int) {
+        tvContent.height = height
     }
 
 }

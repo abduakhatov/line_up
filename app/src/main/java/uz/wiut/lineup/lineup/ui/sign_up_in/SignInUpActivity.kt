@@ -1,5 +1,6 @@
 package uz.wiut.lineup.lineup.ui.sign_up_in
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -15,13 +16,14 @@ import io.reactivex.functions.Consumer
 import uz.wiut.component.utils.RxBus2
 import uz.wiut.component.utils.events.ChangeToolbarTitle
 import uz.wiut.lineup.lineup.R
+import uz.wiut.lineup.lineup.ui.common.BaseActivity
 import uz.wiut.lineup.lineup.ui.main.MainActivity
 import uz.wiut.lineup.lineup.ui.sign_up_in.fragments.SignInFragment
 import uz.wiut.lineup.lineup.ui.sign_up_in.fragments.SignUpFragment
 import uz.wiut.lineup.lineup.utils.Constants
 
 
-class SignInUpActivity : AppCompatActivity(), SignInFragment.OnSignInUpListener {
+class SignInUpActivity : BaseActivity(), SignInFragment.OnSignInUpListener {
 
     private val mCredentialsApiClient: GoogleApiClient? = null
     private val RC_HINT = 1000
@@ -30,6 +32,10 @@ class SignInUpActivity : AppCompatActivity(), SignInFragment.OnSignInUpListener 
     public lateinit var toolbar: Toolbar
     @BindView(R.id.tvToolboxTitle)
     public lateinit var tvToolboxTitle: TextView
+
+    fun start() {
+        navigator.startActivityByContext(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

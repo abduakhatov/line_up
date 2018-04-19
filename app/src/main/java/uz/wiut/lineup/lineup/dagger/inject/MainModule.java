@@ -8,6 +8,9 @@ import uz.wiut.lineup.lineup.ui.common.BaseActivity;
 import uz.wiut.lineup.lineup.ui.common.BaseActivityModule;
 import uz.wiut.lineup.lineup.ui.main.MainActivity;
 import uz.wiut.lineup.lineup.ui.main.di.MainActivityModule;
+import uz.wiut.lineup.lineup.ui.sign_up_in.SplashScreen;
+import uz.wiut.lineup.lineup.ui.splash.SplashScreenActivity;
+import uz.wiut.lineup.lineup.ui.splash.di.SplashScreenModule;
 import uz.wiut.lineup.lineup.ui.test.TestActivity;
 import uz.wiut.lineup.lineup.ui.test.di.TestActivityModule;
 
@@ -28,4 +31,8 @@ public abstract class MainModule {
     @PerActivity
     @ContributesAndroidInjector(modules = MainActivityModule.class)
     abstract MainActivity contributeMainActivity();
+
+    @PerActivity
+    @ContributesAndroidInjector(modules = SplashScreenModule.class)
+    abstract SplashScreenActivity contributeSplashScreenActivity();
 }

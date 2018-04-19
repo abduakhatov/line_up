@@ -103,6 +103,12 @@
 
         </LinearLayout>
 
+
+
+
+
+
+
         <LinearLayout
             android:id="@+id/llLowerDetails"
             android:layout_width="match_parent"

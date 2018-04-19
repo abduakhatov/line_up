@@ -30,6 +30,11 @@ class Navigator {
         context.startActivity(intent)
     }
 
+    fun startActivityByContext(context: Context) {
+        val intent = Intent(context, context::class.java)
+        context.startActivity(intent)
+    }
+
     fun startActivityWithTaskClear(context: Context, toCall : BaseActivity) {
         val intent = Intent(context, toCall::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

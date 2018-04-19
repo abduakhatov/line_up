@@ -14,7 +14,7 @@ import javax.inject.Inject
 /**
  * Created by Shohruh on 07-Mar-18.
  */
-public class App : Application(),HasActivityInjector {
+class App : Application(),HasActivityInjector {
     @Inject
     lateinit var activityInjector : DispatchingAndroidInjector<Activity>
 

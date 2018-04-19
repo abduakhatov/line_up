@@ -6,17 +6,26 @@
         <attr name="title" format="string" />
         <attr name="hint" format="string" />
         <attr name="isPassword" format="boolean" />
-
         <!--Main Container-->
         <attr name="hideRightContainer" format="boolean" />
-
         <!--Right Container Icon-->
         <attr name="iconHide" format="boolean"/>
         <attr name="setIcon" format="reference"/>
-
         <!--Right Container Text-->
         <attr name="setRigthText" format="string"/>
+    </declare-styleable>
 
+    <declare-styleable name="RippleBackground">
+        <attr name="rb_color" format="color" />
+        <attr name="rb_strokeWidth" format="dimension"/>
+        <attr name="rb_radius" format="dimension"/>
+        <attr name="rb_duration" format="integer"/>
+        <attr name="rb_rippleAmount" format="integer"/>
+        <attr name="rb_scale" format="float"/>
+        <attr name="rb_type" format="enum">
+            <enum name="fillRipple" value="0"/>
+            <enum name="strokeRipple" value="1"/>
+        </attr>
     </declare-styleable>
 
 </resources>

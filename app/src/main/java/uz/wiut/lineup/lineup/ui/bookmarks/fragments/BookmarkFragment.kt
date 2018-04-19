@@ -38,7 +38,7 @@ class BookmarkFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_search, container, false) as View
         ButterKnife.bind(this, view)
         setUpView()
-        val adapter = SearchVPAdapter(fragmentManager)
+        val adapter = SearchVPAdapter(childFragmentManager)
         adapter.addFragment(SavedBookmarkFragment(), "Saved")
         adapter.addFragment(HistoryOfBookmarksFragment(), "History")
         vpSearch.adapter = adapter

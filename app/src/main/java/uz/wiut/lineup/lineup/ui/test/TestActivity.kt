@@ -1,14 +1,11 @@
 package uz.wiut.lineup.lineup.ui.test
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
-import junit.framework.Test
 import uz.wiut.lineup.lineup.ui.common.BaseActivity
-import uz.wiut.lineup.lineup.ui.message.MessagesActivity
 import uz.wiut.lineup.lineup.ui.test.presenter.TestActivityPresenterImpl
 import uz.wiut.lineup.lineup.ui.test.presenter.TestActivityPresenterView
 import javax.inject.Inject

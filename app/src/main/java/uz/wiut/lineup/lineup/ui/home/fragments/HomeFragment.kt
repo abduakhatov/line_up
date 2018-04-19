@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
 import butterknife.BindView
 import butterknife.ButterKnife
@@ -17,6 +19,9 @@ import uz.wiut.lineup.lineup.ui.home.adapter.ActiveListAdapter
 import uz.wiut.lineup.lineup.ui.model.Organization
 import uz.wiut.lineup.lineup.ui.model.RegisteredOrganization
 import uz.wiut.lineup.lineup.utils.Constants
+import uz.wiut.component.utils.ui.ripleEffect.RippleBackground
+
+
 
 class HomeFragment : Fragment() {
 
@@ -50,7 +55,6 @@ class HomeFragment : Fragment() {
                 .angle(-45f)
                 .colors(Constants.arrOfColsBelowToolbar)
                 .onBackgroundOf(llGradContainer)
-
     }
 
     companion object {

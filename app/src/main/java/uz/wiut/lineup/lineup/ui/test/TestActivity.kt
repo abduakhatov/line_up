@@ -15,7 +15,7 @@ import javax.inject.Inject
  */
 class TestActivity : BaseActivity(), TestActivityPresenterView {
     @Inject
-    lateinit var presenter : TestActivityPresenterImpl
+    lateinit var presenter: TestActivityPresenterImpl
 
     fun start(context: Context) {
         navigator.startActivity(this, this)
@@ -23,7 +23,7 @@ class TestActivity : BaseActivity(), TestActivityPresenterView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var tv : TextView = TextView(this)
+        var tv: TextView = TextView(this)
         tv.setText("Helloo")
         tv.setOnClickListener(View.OnClickListener {
             // todo

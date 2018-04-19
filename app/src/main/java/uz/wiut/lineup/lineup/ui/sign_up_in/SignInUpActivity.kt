@@ -1,10 +1,8 @@
 package uz.wiut.lineup.lineup.ui.sign_up_in
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.View.GONE
@@ -19,15 +17,22 @@ import uz.wiut.lineup.lineup.R
 import uz.wiut.lineup.lineup.ui.common.BaseActivity
 import uz.wiut.lineup.lineup.ui.main.MainActivity
 import uz.wiut.lineup.lineup.ui.sign_up_in.fragments.SignInFragment
-import uz.wiut.lineup.lineup.ui.sign_up_in.fragments.SignUpFragment
+import uz.wiut.lineup.lineup.ui.sign_up_in.mvp.SignInUpActivityView
+import uz.wiut.lineup.lineup.ui.sign_up_in.mvp.SignUpInActivityPresenterImpl
 import uz.wiut.lineup.lineup.utils.Constants
+import javax.inject.Inject
 
 
-class SignInUpActivity : BaseActivity(), SignInFragment.OnSignInUpListener {
+class SignInUpActivity : BaseActivity(), SignInUpActivityView {
+
+    @Inject
+    lateinit var presenter : SignUpInActivityPresenterImpl
+
 
     private val mCredentialsApiClient: GoogleApiClient? = null
     private val RC_HINT = 1000
     internal var tvUpdateResult: TextView? = null
+
     @BindView(R.id.toolbar)
     public lateinit var toolbar: Toolbar
     @BindView(R.id.tvToolboxTitle)
@@ -44,30 +49,30 @@ class SignInUpActivity : BaseActivity(), SignInFragment.OnSignInUpListener {
         initUI()
     }
 
-    override fun onSignInClicked() {
+    override fun signIn() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
 
-    override fun onSignUpClicked() {
-        changeFragment(SignUpFragment.newInstance(this))
+    override fun signUp() {
+//        changeFragment(SignUpFragment.newInstance(this))
     }
 
-    override fun onForgotPasswordClicked() {
-       // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        Exception()
+    override fun forgotPassword() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onAnonymousClicked() {
+    override fun anonymous() {
         val intent = Intent(this, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }
 
+
     private fun initUI() {
         setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        changeFragment(SignInFragment.newInstance(this))
+//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        changeFragment(SignInFragment.newInstance())
 
         RxBus2.subscribe(RxBus2.TOOLBAR_HIDE, this, Consumer { o ->
             if (o is ChangeToolbarTitle){

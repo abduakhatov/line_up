@@ -1,9 +1,5 @@
 package uz.wiut.lineup.lineup.ui.common
 
-import android.support.v4.app.DialogFragment
-import android.support.annotation.IdRes
-import android.support.v4.app.Fragment
-import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.DaggerAppCompatActivity
 import uz.wiut.lineup.lineup.utils.Navigator
 import javax.inject.Inject
@@ -27,7 +23,7 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
 //                .add(containerViewId, fragment)
 //                .commit()
 //    }
-//
+
 //    protected fun showDialogFragment(dialogFragment: DialogFragment, tag: String) {
 ////        dialogFragment.show(fragmentMngr, tag)
 //    }

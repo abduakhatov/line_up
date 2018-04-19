@@ -31,6 +31,9 @@ class SignUpFragment : Fragment() {
 //    lateinit var etVarif: EditText
     @BindView(R.id.btnSignUp)
     lateinit var btnSignUp: Button
+//    @BindView(R.id.btnSignUp)
+//    lateinit var btnSignUp: Button
+
 //    @BindView(R.id.btnVerify)
 //    lateinit var btnVerify: Button
 

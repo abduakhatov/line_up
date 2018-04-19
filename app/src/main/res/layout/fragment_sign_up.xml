@@ -6,78 +6,12 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-
-
-
-    <!---->
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:orientation="vertical"-->
-        <!--android:paddingLeft="40dp"-->
-        <!--android:paddingRight="40dp">-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/tvName"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Name" />-->
-
-        <!--<EditText-->
-            <!--android:id="@+id/edName"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:hint="Your Name" />-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/tvPhone"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Phone number" />-->
-
-        <!--<EditText-->
-            <!--android:id="@+id/edPhoen"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:hint="Phone number" />-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/tvPassword"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Password" />-->
-
-        <!--<EditText-->
-            <!--android:id="@+id/edPassword"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:hint="Password"-->
-            <!--android:inputType="textPassword" />-->
-
-    <!--</LinearLayout>-->
-    <!--<EditText-->
-        <!--android:id="@+id/etVarif"-->
-        <!--android:layout_above="@+id/btnVerify"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content" />-->
-    <!--<Button-->
-        <!--android:id="@+id/btnVerify"-->
-        <!--android:layout_above="@+id/btnSignUp"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Verify" />-->
-    <!--<Button-->
-        <!--android:id="@+id/btnSignUp"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:text="Sign Up" />-->
-
-
     <LinearLayout
         android:id="@+id/llGradContainer"
         android:layout_width="match_parent"
         android:layout_height="250dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:background="@color/colorAccent"
         android:orientation="vertical"
         android:paddingLeft="40dp"
@@ -145,11 +79,11 @@
 
 
     <LinearLayout
-        android:layout_marginBottom="15dp"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:gravity="center_horizontal"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
+        android:gravity="center_horizontal">
 
         <TextView
             android:id="@+id/tvSignInBtnTitle"
@@ -157,8 +91,7 @@
             android:layout_height="wrap_content"
             android:text="Already have an account? "
             android:textColor="@color/gray_text"
-            android:textSize="13sp"
-            />
+            android:textSize="13sp" />
 
 
         <TextView
@@ -167,8 +100,7 @@
             android:layout_height="wrap_content"
             android:text="Sign In"
             android:textColor="@color/grad"
-            android:textSize="13sp"
-            />
+            android:textSize="13sp" />
 
     </LinearLayout>
 

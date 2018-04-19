@@ -2,8 +2,6 @@ package uz.wiut.lineup.lineup.ui.sign_up_in.fragments
 
 
 import android.Manifest
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
 import android.animation.ValueAnimator
 import android.content.Context
 import android.content.pm.PackageManager
@@ -11,7 +9,6 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
-import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewCompat
 import android.telephony.TelephonyManager
@@ -19,58 +16,60 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.view.animation.LinearInterpolator
-import android.widget.*
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.TextView
+import android.widget.Toast
 import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
 import co.revely.gradient.RevelyGradient
 import com.google.firebase.auth.FirebaseAuth
+import dagger.android.support.DaggerFragment
 import uz.wiut.component.utils.RxBus2
 import uz.wiut.component.utils.events.ChangeToolbarTitle
 import uz.wiut.component.utils.ui.CustomEditTextListener
 import uz.wiut.lineup.lineup.R
+import uz.wiut.lineup.lineup.ui.sign_up_in.mvp.SignInFragmentPresenterImpl
+import uz.wiut.lineup.lineup.ui.sign_up_in.mvp.SignInFragmentView
 import uz.wiut.lineup.lineup.utils.Constants
 import java.io.Serializable
+import javax.inject.Inject
 
-class SignInFragment : Fragment(){
+class SignInFragment : DaggerFragment(), SignInFragmentView {
+
+    @Inject
+    lateinit var presenter: SignInFragmentPresenterImpl
 
     @BindView(R.id.llGradContainer)
-    lateinit var llGradContainer : LinearLayout
-//    @BindView(R.id.edPhone)
-//    lateinit var edPhone : EditText
-//    @BindView(R.id.edPassword)
-//    lateinit var edPassword : EditText
-//    @BindView(R.id.vLine)
-//    lateinit var vLine : View
-//    @BindView(R.id.tvOrText)
-//    lateinit var tvOrText : TextView
+    lateinit var llGradContainer: LinearLayout
     @BindView(R.id.btnSignUp)
-    lateinit var btnSignUp : Button
-//    @BindView(R.id.tvForgotPassBtn)
-//    lateinit var tvForgotPassBtn : TextView
-//    @BindView(R.id.tvNotNowBtn)
-//    lateinit var tvNotNowBtn : TextView
+    lateinit var btnSignUp: Button
     @BindView(R.id.btnSignIn)
     lateinit var btnSignIn: Button
     @BindView(R.id.llWorkingContainer)
     lateinit var llWorkingContainer: LinearLayout
+    @BindView(R.id.tvForgotPassBtn)
+    lateinit var tvForgotPassBtn: TextView
+    @BindView(R.id.tvOrText)
+    lateinit var tvOrText: TextView
 
     private var listener: OnSignInUpListener? = null
-    private lateinit var mAuth: FirebaseAuth
+//    private lateinit var mAuth: FirebaseAuth
     var wantPermission = Manifest.permission.READ_PHONE_STATE
     private val PERMISSION_REQUEST_CODE = 1
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mAuth = FirebaseAuth.getInstance();
-        val currentUser = mAuth.currentUser
-        Log.d(Constants.DEBUG, "${currentUser.toString()} -- > ${currentUser} --> $currentUser");
+//        mAuth = FirebaseAuth.getInstance();
+//        val currentUser = mAuth.currentUser
+//        Log.d(Constants.DEBUG, "${currentUser.toString()} -- > ${currentUser} --> $currentUser");
 
-        arguments?.let {
-            listener = it.getSerializable(Constants.SIGN_CLICK_LISTENER) as OnSignInUpListener
-        }
+//        arguments?.let {
+//            listener = it.getSerializable(Constants.SIGN_CLICK_LISTENER) as OnSignInUpListener
+//        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -85,15 +84,15 @@ class SignInFragment : Fragment(){
 
     private fun initUI() {
         RxBus2.publish(RxBus2.TOOLBAR_HIDE, ChangeToolbarTitle())
-        if (!checkPermission(wantPermission)) {
-            requestPermission(wantPermission);
-        } else {
-            Log.d(Constants.DEBUG, "Phone number: " + getPhone());
-        }
+//        if (!checkPermission(wantPermission)) {
+//            requestPermission(wantPermission);
+//        } else {
+//            Log.d(Constants.DEBUG, "Phone number: " + getPhone());
+//        }
 
-        var lisnter: CustomEditTextListener
-        ViewCompat.setElevation(llWorkingContainer, 2f)
-
+//        var lisnter: CustomEditTextListener
+//        ViewCompat.setElevation(llWorkingContainer, 2f)
+//
         // Gradient bg
         val arrOfCols = intArrayOf(Color.parseColor("#0072ff"), Color.parseColor("#2acffd"))
 
@@ -134,19 +133,19 @@ class SignInFragment : Fragment(){
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         //super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == PERMISSION_REQUEST_CODE){
+        if (requestCode == PERMISSION_REQUEST_CODE) {
             if (grantResults.count() > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Log.d(Constants.DEBUG, "Phone number: " + getPhone());
             } else {
-                Toast.makeText(activity,"Permission Denied. We can't get phone number.", Toast.LENGTH_LONG).show();
+                Toast.makeText(activity, "Permission Denied. We can't get phone number.", Toast.LENGTH_LONG).show();
             }
         }
     }
 
-    private fun checkPermission(permission:String) : Boolean {
+    private fun checkPermission(permission: String): Boolean {
         if (Build.VERSION.SDK_INT >= 23) {
             var result = ContextCompat.checkSelfPermission(activity, permission);
-            if (result == PackageManager.PERMISSION_GRANTED){
+            if (result == PackageManager.PERMISSION_GRANTED) {
                 return true;
             } else {
                 return false;
@@ -156,21 +155,41 @@ class SignInFragment : Fragment(){
         }
     }
 
-//    @OnClick(R.id.btnSignUp)
-//    fun signUpClicked() {
+    @OnClick(R.id.btnSignUp)
+    fun signUpClicked() {
 //        listener!!.onSignUpClicked()
-//    }
+    }
 
-//    @OnClick(R.id.btnAnonymous)
-//    fun anonymousClicked() {
+    @OnClick(R.id.tvForgotPassBtn)
+    fun anonymousClicked() {
 //        listener!!.onAnonymousClicked()
-//    }
+    }
 
-//    @OnClick(R.id.btnSignIn)
-//    fun signInClicked() {
+    @OnClick(R.id.btnSignIn)
+    fun signInClicked() {
 //        listener!!.onSignInClicked()
-//    }
+    }
 
+    @OnClick(R.id.tvNotNowBtn)
+    fun tvNotNowClicked() {
+//        listener!!.onSignInClicked()
+    }
+
+    override fun signIn() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun signUp() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun forgotPassword() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun anonymous() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     interface OnSignInUpListener : Serializable {
         fun onSignInClicked()
@@ -187,5 +206,9 @@ class SignInFragment : Fragment(){
                         putSerializable(Constants.SIGN_CLICK_LISTENER, listnr)
                     }
                 }
+
+        @JvmStatic
+        fun newInstance() = SignInFragment()
+
     }
 }

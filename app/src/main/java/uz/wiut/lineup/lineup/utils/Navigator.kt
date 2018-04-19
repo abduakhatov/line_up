@@ -3,12 +3,13 @@ package uz.wiut.lineup.lineup.utils
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.support.v7.widget.Toolbar
-import javax.inject.Inject
-import javax.inject.Singleton
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
+import android.support.v7.widget.Toolbar
+import uz.wiut.lineup.lineup.R
 import uz.wiut.lineup.lineup.ui.common.BaseActivity
-import uz.wiut.lineup.lineup.ui.test.TestActivity
+import uz.wiut.lineup.lineup.ui.sign_up_in.SignInUpActivity
+import javax.inject.Inject
 
 /**
  * Created by Shohruh on 07-Mar-18.
@@ -47,12 +48,22 @@ class Navigator {
         context.startActivityForResult(intent, LOGIN_REQUEST_CODE)
     }
 
-    fun startFragment(context: Context, fragment: Fragment) {
-        val intent = Intent(context, fragment::class.java)
-        context.startActivity(intent)
-    }
+//    fun startFragment(context: Context, fragment: Fragment) {
+//        val intent = Intent(context, fragment::class.java)
+//        context.startActivity(intent)
+//    }
 
     fun setSupportActionBar(toolbar: Toolbar){
         setSupportActionBar(toolbar)
     }
+
+//    private fun changeFragment(fragmentManager: FragmentManager, fragment: Fragment, className: String) {
+//        if (fragment != null) {
+//            fragmentManager
+//                    .beginTransaction()
+//                    .addToBackStack(className)
+//                    .replace(R.id.flMainContent, fragment)
+//                    .commit()
+//        }
+//    }
 }

@@ -12,6 +12,7 @@ import javax.inject.Named
  */
 @Module
 abstract class BaseActivityModule {
+
     companion object {
         const val ACTIVITY_FRAGMENT_MANAGER = "BaseActivityModule.activityFragmentManager"
         const val ACTIVITY_NAVIGATOR = "BaseActivityModule.navigator"

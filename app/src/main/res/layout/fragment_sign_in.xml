@@ -32,14 +32,14 @@
         android:paddingRight="25dp"
         android:paddingTop="25dp">
 
-        <uz.wiut.component.utils.ui.CustomEditText
+        <uz.wiut.component.utils.ui.customEditText.CustomEditText
             android:id="@+id/edPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:hideRightContainer="true"
             app:hint="Phone" />
 
-        <uz.wiut.component.utils.ui.CustomEditText
+        <uz.wiut.component.utils.ui.customEditText.CustomEditText
             android:id="@+id/edPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

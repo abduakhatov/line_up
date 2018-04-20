@@ -17,14 +17,22 @@ import com.aurelhubert.ahbottomnavigation.notification.AHNotification
 import uz.wiut.lineup.lineup.R
 import uz.wiut.lineup.lineup.ui.bookmarks.fragments.BookmarkFragment
 import uz.wiut.component.utils.ui.NoSwipePager
+import uz.wiut.lineup.lineup.ui.common.BaseActivity
 import uz.wiut.lineup.lineup.ui.home.fragments.HomeFragment
 import uz.wiut.lineup.lineup.utils.Constants
 import uz.wiut.lineup.lineup.ui.home.adapter.BottomBarAdapter
+import uz.wiut.lineup.lineup.ui.main.pv.HomeActivityPresenterImpl
+import uz.wiut.lineup.lineup.ui.main.pv.HomeActivityView
 import uz.wiut.lineup.lineup.ui.my_profile.MyProfileFragment
 import uz.wiut.lineup.lineup.ui.search.SearchFragment
+import javax.inject.Inject
 
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity(), HomeActivityView {
+
+    @Inject
+    lateinit var presenter : HomeActivityPresenterImpl
+
 
     @BindView(R.id.bottom_navigation)
     lateinit var bottomNavigation: AHBottomNavigation
@@ -41,7 +49,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.content_main)
         ButterKnife.bind(this)
-        initUI()
+//        initUI()
 //        changeFragment(HomeFragment.newInstance())
     }
 

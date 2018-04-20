@@ -13,11 +13,18 @@ import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
+import dagger.android.support.DaggerFragment
 
 import uz.wiut.lineup.lineup.R
+import uz.wiut.lineup.lineup.ui.home.mvp.fragment.OrganizationDetailsFragmentPresenterImpl
+import uz.wiut.lineup.lineup.ui.home.mvp.fragment.OrganizationDetailsFragmentView
 import uz.wiut.lineup.lineup.utils.Constants
+import javax.inject.Inject
 
-class OrganizationDetailsFragment : Fragment() {
+class OrganizationDetailsFragment : DaggerFragment(), OrganizationDetailsFragmentView {
+
+    @Inject
+    lateinit var presenter : OrganizationDetailsFragmentPresenterImpl
 
     @BindView(R.id.tvOfficeStatus)
     lateinit var tvOfficeStatus: TextView

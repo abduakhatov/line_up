@@ -25,9 +25,9 @@
         </activity>
         <activity android:name=".ui.message.MessagesActivity" />
          <activity android:name=".ui.sign_up_in.SignInUpActivity" />
-        <!-- <activity android:name=".ui.home.OrganizationDetailsActivity" /> -->
+         <activity android:name=".ui.main.HomeActivity" />
+         <activity android:name=".ui.home.OrganizationDetailsActivity" />
         <!-- <activity android:name=".ui.test.nav_bar_test.Main2Activity"></activity> -->
-        <!-- <activity android:name=".ui.splash.SplashScreenActivity"></activity> -->
     </application>
 
 </manifest>

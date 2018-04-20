@@ -14,15 +14,21 @@ import uz.wiut.lineup.lineup.R
 import uz.wiut.lineup.lineup.ui.search.adapter.SearchVPAdapter
 import uz.wiut.lineup.lineup.ui.search.fragments.CategorySearchFragment
 import uz.wiut.lineup.lineup.ui.search.fragments.MapSearchFragment
-import uz.wiut.lineup.lineup.ui.search.fragments.NameSearchFragment
-import uz.wiut.lineup.lineup.ui.main.HomeActivity
-import android.support.v4.view.ViewPager.OnPageChangeListener
+import uz.wiut.lineup.lineup.ui.search.fragments.CitySearchFragment
 import android.widget.RelativeLayout
 import co.revely.gradient.RevelyGradient
+import dagger.android.support.DaggerFragment
+import uz.wiut.lineup.lineup.ui.search.mvp.SearchFragmentPresenterImpl
+import uz.wiut.lineup.lineup.ui.search.mvp.SearchFragmentView
 import uz.wiut.lineup.lineup.utils.Constants
+import javax.inject.Inject
 
 
-class SearchFragment : Fragment() {
+class SearchFragment : DaggerFragment(), SearchFragmentView {
+
+    @Inject
+    lateinit var presenter : SearchFragmentPresenterImpl
+
 
     @BindView(R.id.vpSearch)
     lateinit var vpSearch: ViewPager
@@ -45,7 +51,7 @@ class SearchFragment : Fragment() {
         val adapter = SearchVPAdapter(childFragmentManager)
 
         adapter.addFragment(CategorySearchFragment(), "Category")
-        adapter.addFragment(NameSearchFragment(), "Name")
+        adapter.addFragment(CitySearchFragment(), "Name")
         adapter.addFragment(MapSearchFragment(), "Map")
         vpSearch.adapter = adapter
         tlSearch.setupWithViewPager(vpSearch)

@@ -24,7 +24,7 @@ constructor(
         context: Context,
         attrs: AttributeSet? = null,
         defStyleAttr: Int = 0)
-    : FrameLayout(context, attrs, defStyleAttr), View.OnClickListener {
+    : FrameLayout(context, attrs, defStyleAttr) {
 
     private lateinit var tvTitle: TextView
     private lateinit var rlBody: RelativeLayout
@@ -85,7 +85,7 @@ constructor(
         flRightView = findViewById(R.id.flRightView)
         ivIcon = findViewById(R.id.ivIcon)
         tvEditTextValue = findViewById(R.id.tvEditTextValue)
-        setIcon()
+//        setIcon(R.drawable.ic_android_black_24dp)
     }
 
     override fun onViewAdded(child: View) {
@@ -93,17 +93,8 @@ constructor(
         init()
     }
 
-    override fun onClick(view: View) {
-        if (listener != null)
-            listener!!.click()
-    }
-
-    fun setSpinnerListener(listener: CustomEditTextListener) {
-        this.listener = listener
-    }
-
-    fun setIcon() {
-        ivIcon.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_pass));
+    fun setIcon(drawable: Int) {
+        ivIcon.setImageDrawable(ContextCompat.getDrawable(context, drawable));
     }
 
     fun setHeight(height: Int) {

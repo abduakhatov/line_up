@@ -10,7 +10,6 @@ import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
-import android.support.v4.view.ViewCompat
 import android.telephony.TelephonyManager
 import android.util.Log
 import android.view.LayoutInflater
@@ -25,14 +24,12 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
 import co.revely.gradient.RevelyGradient
-import com.google.firebase.auth.FirebaseAuth
 import dagger.android.support.DaggerFragment
 import uz.wiut.component.utils.RxBus2
 import uz.wiut.component.utils.events.ChangeToolbarTitle
-import uz.wiut.component.utils.ui.CustomEditTextListener
 import uz.wiut.lineup.lineup.R
-import uz.wiut.lineup.lineup.ui.sign_up_in.mvp.SignInFragmentPresenterImpl
-import uz.wiut.lineup.lineup.ui.sign_up_in.mvp.SignInFragmentView
+import uz.wiut.lineup.lineup.ui.sign_up_in.mvp.SignIn.SignInFragmentPresenterImpl
+import uz.wiut.lineup.lineup.ui.sign_up_in.mvp.SignIn.SignInFragmentView
 import uz.wiut.lineup.lineup.utils.Constants
 import java.io.Serializable
 import javax.inject.Inject
@@ -56,7 +53,7 @@ class SignInFragment : DaggerFragment(), SignInFragmentView {
     lateinit var tvOrText: TextView
 
     private var listener: OnSignInUpListener? = null
-//    private lateinit var mAuth: FirebaseAuth
+    //    private lateinit var mAuth: FirebaseAuth
     var wantPermission = Manifest.permission.READ_PHONE_STATE
     private val PERMISSION_REQUEST_CODE = 1
 
@@ -80,7 +77,6 @@ class SignInFragment : DaggerFragment(), SignInFragmentView {
         initUI()
         return view
     }
-
 
     private fun initUI() {
         RxBus2.publish(RxBus2.TOOLBAR_HIDE, ChangeToolbarTitle())

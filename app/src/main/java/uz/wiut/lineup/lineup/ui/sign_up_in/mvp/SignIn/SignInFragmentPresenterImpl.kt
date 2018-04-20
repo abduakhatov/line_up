@@ -1,4 +1,4 @@
-package uz.wiut.lineup.lineup.ui.sign_up_in.mvp
+package uz.wiut.lineup.lineup.ui.sign_up_in.mvp.SignIn
 
 import javax.inject.Inject
 

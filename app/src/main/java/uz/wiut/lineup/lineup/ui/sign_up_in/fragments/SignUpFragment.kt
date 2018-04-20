@@ -15,12 +15,20 @@ import butterknife.OnClick
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
+import dagger.android.support.DaggerFragment
 import uz.wiut.component.utils.ui.CustomEditText
 import uz.wiut.lineup.lineup.R
+import uz.wiut.lineup.lineup.ui.sign_up_in.mvp.SignUp.SignUpFragmentPresenterImpl
+import uz.wiut.lineup.lineup.ui.sign_up_in.mvp.SignUp.SignUpFragmentView
 import uz.wiut.lineup.lineup.utils.Constants
+import javax.inject.Inject
 
 
-class SignUpFragment : Fragment() {
+class SignUpFragment : DaggerFragment(), SignUpFragmentView {
+
+    @Inject
+    lateinit var presenter: SignUpFragmentPresenterImpl
+
     @BindView(R.id.edName)
     lateinit var etName: CustomEditText
     @BindView(R.id.edPhone)

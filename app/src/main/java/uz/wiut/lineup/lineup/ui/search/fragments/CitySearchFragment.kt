@@ -9,15 +9,23 @@ import android.view.View
 import android.view.ViewGroup
 import butterknife.BindView
 import butterknife.ButterKnife
+import dagger.android.support.DaggerFragment
 import uz.wiut.lineup.lineup.R
 import uz.wiut.lineup.lineup.ui.model.Organization
 import uz.wiut.lineup.lineup.ui.search.adapter.SeachListAdapter
+import uz.wiut.lineup.lineup.ui.search.mvp.city.CitySearchFragmentPresenterImpl
+import uz.wiut.lineup.lineup.ui.search.mvp.city.CitySearchFragmentView
+import javax.inject.Inject
 
 /**
  * Created by abduakhatov on 1/17/18 at 12:46 PM.
  */
 
-class NameSearchFragment : Fragment() {
+class CitySearchFragment : DaggerFragment(), CitySearchFragmentView{
+
+    @Inject
+    lateinit var presenter : CitySearchFragmentPresenterImpl
+
     @BindView(R.id.rvSearchList)
     lateinit var rvSearchList: RecyclerView
 

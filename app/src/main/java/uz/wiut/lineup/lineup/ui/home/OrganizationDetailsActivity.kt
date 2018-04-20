@@ -1,19 +1,25 @@
 package uz.wiut.lineup.lineup.ui.home
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import butterknife.ButterKnife
 import uz.wiut.lineup.lineup.R
+import uz.wiut.lineup.lineup.ui.common.BaseActivity
 import uz.wiut.lineup.lineup.ui.home.fragments.OrganizationDetailsFragment
+import uz.wiut.lineup.lineup.ui.home.mvp.OrganizationDetailsActivityPresenterImpl
+import uz.wiut.lineup.lineup.ui.home.mvp.OrganizationDetailsActivityView
+import javax.inject.Inject
 
-class OrganizationDetailsActivity : AppCompatActivity() {
+class OrganizationDetailsActivity : BaseActivity(), OrganizationDetailsActivityView {
+
+    @Inject
+    lateinit var presenter : OrganizationDetailsActivityPresenterImpl
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.content_main)
         ButterKnife.bind(this)
 
-        initUI()
+//        initUI()
 
     }
 

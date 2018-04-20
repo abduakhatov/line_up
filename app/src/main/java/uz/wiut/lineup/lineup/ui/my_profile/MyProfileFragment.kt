@@ -1,21 +1,25 @@
 package uz.wiut.lineup.lineup.ui.my_profile
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageView
 import butterknife.BindView
 import butterknife.ButterKnife
-import uz.wiut.component.utils.ui.ripleEffect.RippleBackground
+import dagger.android.support.DaggerFragment
 import uz.wiut.lineup.lineup.R
+import uz.wiut.lineup.lineup.ui.my_profile.mvp.MyProfileFragmentPresenterImpl
+import uz.wiut.lineup.lineup.ui.my_profile.mvp.MyProfileFragmentView
+import javax.inject.Inject
 
-class MyProfileFragment : Fragment() {
+class MyProfileFragment : DaggerFragment(), MyProfileFragmentView {
+
+    @Inject
+    lateinit var presenter: MyProfileFragmentPresenterImpl
 
     @BindView(R.id.btnSave)
-    lateinit var btnSave : Button
+    lateinit var btnSave: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -9,14 +9,21 @@ import android.view.View
 import android.view.ViewGroup
 import butterknife.BindView
 import butterknife.ButterKnife
+import dagger.android.support.DaggerFragment
 import uz.wiut.lineup.lineup.R
 import uz.wiut.lineup.lineup.ui.model.Organization
 import uz.wiut.lineup.lineup.ui.search.adapter.SeachListAdapter
+import uz.wiut.lineup.lineup.ui.search.mvp.category.CategorySearchFragmentPresenterImpl
+import uz.wiut.lineup.lineup.ui.search.mvp.category.CategorySearchFragmentView
+import javax.inject.Inject
 
 /**
  * Created by abduakhatov on 1/17/18 at 6:41 PM.
  */
-class CategorySearchFragment : Fragment() {
+class CategorySearchFragment : DaggerFragment() , CategorySearchFragmentView{
+
+    @Inject
+    lateinit var presenter : CategorySearchFragmentPresenterImpl
 
     @BindView(R.id.rvSearchList)
     lateinit var rvSearchList: RecyclerView

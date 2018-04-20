@@ -14,16 +14,22 @@ import android.widget.LinearLayout
 import butterknife.BindView
 import butterknife.ButterKnife
 import co.revely.gradient.RevelyGradient
+import dagger.android.support.DaggerFragment
 import uz.wiut.lineup.lineup.R
 import uz.wiut.lineup.lineup.ui.home.adapter.ActiveListAdapter
 import uz.wiut.lineup.lineup.ui.model.Organization
 import uz.wiut.lineup.lineup.ui.model.RegisteredOrganization
 import uz.wiut.lineup.lineup.utils.Constants
 import uz.wiut.component.utils.ui.ripleEffect.RippleBackground
+import uz.wiut.lineup.lineup.ui.home.mvp.fragment.HomeFragmentPresenterImpl
+import uz.wiut.lineup.lineup.ui.home.mvp.fragment.HomeFragmentView
+import javax.inject.Inject
 
 
+class HomeFragment : DaggerFragment(), HomeFragmentView {
 
-class HomeFragment : Fragment() {
+    @Inject
+    lateinit var presenter : HomeFragmentPresenterImpl
 
     @BindView(R.id.llGradContainer)
     lateinit var llGradContainer : LinearLayout

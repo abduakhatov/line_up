@@ -1,4 +1,4 @@
-package uz.wiut.lineup.lineup.ui.bookmarks.fragments
+package uz.wiut.lineup.lineup.ui.bookmarks
 
 
 import android.os.Bundle
@@ -14,6 +14,8 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import co.revely.gradient.RevelyGradient
 import uz.wiut.lineup.lineup.R
+import uz.wiut.lineup.lineup.ui.bookmarks.fragments.HistoryOfBookmarksFragment
+import uz.wiut.lineup.lineup.ui.bookmarks.fragments.SavedBookmarkFragment
 import uz.wiut.lineup.lineup.ui.search.adapter.SearchVPAdapter
 import uz.wiut.lineup.lineup.utils.Constants
 

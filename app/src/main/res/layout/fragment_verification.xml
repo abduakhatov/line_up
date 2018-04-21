@@ -42,7 +42,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnVeify"
+        android:id="@+id/btnVerify"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/llWorkingContainer"
@@ -60,11 +60,11 @@
 
 
     <LinearLayout
-        android:layout_marginBottom="10dp"
-        android:layout_above="@+id/llNotNow"
         android:layout_width="match_parent"
-        android:gravity="center_horizontal"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/llNotNow"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_horizontal">
 
         <TextView
             android:id="@+id/tvSignInBtnTitle"
@@ -72,8 +72,7 @@
             android:layout_height="wrap_content"
             android:text="Already have an account? "
             android:textColor="@color/gray_text"
-            android:textSize="13sp"
-            />
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/tvSignInBtn"
@@ -81,18 +80,17 @@
             android:layout_height="wrap_content"
             android:text="Sign In"
             android:textColor="@color/grad"
-            android:textSize="13sp"
-            />
+            android:textSize="13sp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/llNotNow"
-        android:layout_marginBottom="15dp"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:gravity="center_horizontal"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
+        android:gravity="center_horizontal">
 
         <TextView
             android:id="@+id/tvNotNowBtnTitle"
@@ -100,8 +98,7 @@
             android:layout_height="wrap_content"
             android:text="Do not want to create? "
             android:textColor="@color/gray_text"
-            android:textSize="13sp"
-            />
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/tvNotNowBtn"
@@ -109,8 +106,7 @@
             android:layout_height="wrap_content"
             android:text="Later"
             android:textColor="@color/grad"
-            android:textSize="13sp"
-            />
+            android:textSize="13sp" />
 
     </LinearLayout>
 

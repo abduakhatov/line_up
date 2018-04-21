@@ -8,7 +8,7 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import uz.wiut.lineup.lineup.R
 import uz.wiut.lineup.lineup.ui.message.adapter.MessageAdapter
-import uz.wiut.lineup.lineup.ui.model.Message
+import uz.wiut.lineup.lineup.model.Message
 
 class MessagesActivity : AppCompatActivity() {
 

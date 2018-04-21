@@ -1,7 +1,6 @@
 package uz.wiut.lineup.lineup.ui.main
 
 import android.content.Context
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
@@ -14,29 +13,24 @@ import android.support.v4.content.ContextCompat
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import butterknife.BindView
-import butterknife.BindViews
 import butterknife.ButterKnife
 import uz.wiut.lineup.lineup.R
-import uz.wiut.lineup.lineup.ui.bookmarks.fragments.BookmarkFragment
+import uz.wiut.lineup.lineup.ui.bookmarks.BookmarkFragment
 import uz.wiut.lineup.lineup.ui.common.BaseActivity
 import uz.wiut.lineup.lineup.ui.home.fragments.HomeFragment
 import uz.wiut.lineup.lineup.ui.main.pv.MainActivityPresenterImpl
 import uz.wiut.lineup.lineup.ui.main.pv.MainActivityView
-import uz.wiut.lineup.lineup.ui.message.MessagesActivity
 import uz.wiut.lineup.lineup.ui.my_profile.MyProfileFragment
 import uz.wiut.lineup.lineup.ui.search.SearchFragment
-import uz.wiut.lineup.lineup.ui.test.presenter.TestActivityPresenterImpl
 import javax.inject.Inject
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
 import com.aurelhubert.ahbottomnavigation.notification.AHNotification
-import kotlinx.android.synthetic.main.content_main.*
 
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, MainActivityView{

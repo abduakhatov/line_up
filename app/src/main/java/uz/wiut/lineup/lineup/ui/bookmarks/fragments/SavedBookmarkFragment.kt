@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import butterknife.BindView
 import butterknife.ButterKnife
 import uz.wiut.lineup.lineup.R
-import uz.wiut.lineup.lineup.ui.model.Organization
+import uz.wiut.lineup.lineup.model.Organization
 import uz.wiut.lineup.lineup.ui.search.adapter.SeachListAdapter
 
 

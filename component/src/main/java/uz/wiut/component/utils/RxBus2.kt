@@ -37,6 +37,9 @@ class RxBus2 {
 
         const val TOOLBAR_HIDE = 4
 
+        const val CHANGE_FRAGMENT = 5
+        const val SIGN_IN = 5
+
         /**
          * Get the subject or create it if it's not already in memory.
          */

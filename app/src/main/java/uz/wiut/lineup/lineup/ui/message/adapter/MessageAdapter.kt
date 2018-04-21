@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import uz.wiut.lineup.lineup.R
-import uz.wiut.lineup.lineup.ui.model.Message
+import uz.wiut.lineup.lineup.model.Message
 
 /**
  * Created by abduakhatov on 1/19/18 at 11:29 PM.

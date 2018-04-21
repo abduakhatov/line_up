@@ -1,4 +1,4 @@
-package uz.wiut.lineup.lineup.ui.model
+package uz.wiut.lineup.lineup.model
 
 /**
  * Created by abduakhatov on 1/19/18 at 12:35 AM.

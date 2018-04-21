@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import uz.wiut.lineup.lineup.R
-import uz.wiut.lineup.lineup.ui.model.Organization
+import uz.wiut.lineup.lineup.model.Organization
 import uz.wiut.lineup.lineup.utils.Constants
 
 /**

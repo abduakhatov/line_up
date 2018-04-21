@@ -1,8 +1,7 @@
-package uz.wiut.lineup.lineup.ui.common
+package uz.wiut.lineup.lineup.ui.common.di
 
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import uz.wiut.lineup.lineup.dagger.inject.inject.PerActivity
 import uz.wiut.lineup.lineup.utils.Navigator
 import javax.inject.Named

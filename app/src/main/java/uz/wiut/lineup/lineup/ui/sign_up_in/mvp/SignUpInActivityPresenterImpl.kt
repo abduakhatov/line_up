@@ -11,25 +11,8 @@ class SignUpInActivityPresenterImpl : SignUpInActivityPresenter{
 
     @Inject
     lateinit var view : SignInUpActivityView
+
     @Inject
     constructor()
-
-
-    override fun onSignInClicked() {
-        view.signIn()
-    }
-
-    override fun onSignUpClicked() {
-        view.signUp()
-    }
-
-    override fun onForgotPasswordClicked() {
-        view.forgotPassword()
-    }
-
-    override fun onAnonymousClicked() {
-        view.anonymous()
-    }
-
 
 }

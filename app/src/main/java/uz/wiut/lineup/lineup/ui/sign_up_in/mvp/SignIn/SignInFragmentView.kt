@@ -8,4 +8,6 @@ interface SignInFragmentView {
     fun signUp()
     fun forgotPassword()
     fun anonymous()
+    fun message(message: String)
+    fun log(message: String)
 }

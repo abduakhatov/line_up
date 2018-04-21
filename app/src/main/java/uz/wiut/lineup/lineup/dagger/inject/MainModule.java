@@ -7,7 +7,9 @@ import uz.wiut.lineup.lineup.dagger.inject.inject.PerActivity;
 import uz.wiut.lineup.lineup.dagger.inject.inject.PerChildFragment;
 import uz.wiut.lineup.lineup.dagger.inject.inject.PerFragment;
 import uz.wiut.lineup.lineup.ui.common.BaseActivity;
-import uz.wiut.lineup.lineup.ui.common.BaseActivityModule;
+import uz.wiut.lineup.lineup.ui.common.di.BaseActivityModule;
+import uz.wiut.lineup.lineup.ui.common.di.BaseFragmentModule;
+import uz.wiut.lineup.lineup.ui.common.fragment.BaseFragment;
 import uz.wiut.lineup.lineup.ui.home.OrganizationDetailsActivity;
 import uz.wiut.lineup.lineup.ui.home.di.HomeFragmentModule;
 import uz.wiut.lineup.lineup.ui.home.di.OrganizationDetailsActivityModule;
@@ -79,6 +81,10 @@ public abstract class MainModule {
 
 
     // Fragments
+    @PerFragment
+    @ContributesAndroidInjector(modules = BaseFragmentModule.class)
+    abstract BaseFragment contributeBaseFragment();
+
     @PerFragment
     @ContributesAndroidInjector(modules = SignInFragmentModule.class)
     abstract SignInFragment contributeSignInFragment();

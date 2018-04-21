@@ -18,11 +18,9 @@ class VerificationFragment : DaggerFragment(), VerificationFragmentView{
     @Inject
     lateinit var presenter : VerificationFragmentPresenterImpl
 
-
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater!!.inflate(R.layout.fragment_verification, container, false)
     }
-
 }

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
@@ -43,11 +42,9 @@
             android:id="@+id/edPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/edPhone"
             app:hideRightContainer="true"
             app:hint="Password"
             app:isPassword="true" />
-
 
     </LinearLayout>
 
@@ -92,7 +89,7 @@
             android:text="Create New"
             android:textColor="@color/white"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/tvForgotPassBtn"
+            app:layout_constraintBottom_toTopOf="@+id/llForgetContainer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -105,24 +102,47 @@
             android:layout_gravity="center_horizontal"
             android:text="Not now >>"
             android:textSize="13sp"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvForgotPassBtn" />
+            app:layout_constraintTop_toBottomOf="@+id/llForgetContainer" />
 
-        <TextView
-            android:id="@+id/tvForgotPassBtn"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/llForgetContainer"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:layout_gravity="center_horizontal"
-            android:text="Forgot password"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toTopOf="@+id/tvNotNowBtn"
+            android:layout_marginBottom="8dp"
+            android:gravity="center_horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnSignUp" />
+            app:layout_constraintTop_toBottomOf="@+id/btnSignUp">
+
+            <TextView
+                android:id="@+id/tvSignInBtnTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:text="Cannot Login?"
+                android:textColor="@color/gray_text"
+                android:textSize="13sp" />
+
+
+            <TextView
+                android:id="@+id/tvForgotPassBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Forgot password"
+                android:textColor="@color/grad"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
 
         <RelativeLayout
             android:id="@+id/relativeLayout"
@@ -155,7 +175,7 @@
                 android:textColor="@color/grad_trans"
                 android:textSize="15sp"
                 android:textStyle="bold" />
-        </RelativeLayout>
 
+        </RelativeLayout>
     </android.support.constraint.ConstraintLayout>
 </RelativeLayout>

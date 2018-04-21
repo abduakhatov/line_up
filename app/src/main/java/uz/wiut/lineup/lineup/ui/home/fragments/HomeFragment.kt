@@ -17,8 +17,8 @@ import co.revely.gradient.RevelyGradient
 import dagger.android.support.DaggerFragment
 import uz.wiut.lineup.lineup.R
 import uz.wiut.lineup.lineup.ui.home.adapter.ActiveListAdapter
-import uz.wiut.lineup.lineup.ui.model.Organization
-import uz.wiut.lineup.lineup.ui.model.RegisteredOrganization
+import uz.wiut.lineup.lineup.model.Organization
+import uz.wiut.lineup.lineup.model.RegisteredOrganization
 import uz.wiut.lineup.lineup.utils.Constants
 import uz.wiut.component.utils.ui.ripleEffect.RippleBackground
 import uz.wiut.lineup.lineup.ui.home.mvp.fragment.HomeFragmentPresenterImpl

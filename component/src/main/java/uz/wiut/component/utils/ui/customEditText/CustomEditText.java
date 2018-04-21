@@ -102,4 +102,12 @@ public class CustomEditText extends FrameLayout{
     public void setIcon(int drawable) {
         ivIcon.setImageDrawable(ContextCompat.getDrawable(getContext(), drawable));
     }
+
+    public void changeInputType(int inputType){
+        tvContent.setInputType(inputType);
+    }
+
+    public String getText(){
+        return tvContent.getText().toString();
+    }
 }

@@ -1,164 +1,139 @@
 package uz.wiut.lineup.lineup.ui.sign_up_in.fragments
 
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import android.text.InputType
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
-import com.google.firebase.FirebaseException
-import com.google.firebase.FirebaseTooManyRequestsException
-import com.google.firebase.auth.*
-import dagger.android.support.DaggerFragment
-import uz.wiut.component.utils.ui.CustomEditText
+import co.revely.gradient.RevelyGradient
+import io.reactivex.functions.Consumer
+import uz.wiut.component.utils.RxBus2
+import uz.wiut.component.utils.events.Authentification
+import uz.wiut.component.utils.ui.customEditText.CustomEditText
 import uz.wiut.lineup.lineup.R
+import uz.wiut.lineup.lineup.ui.common.BaseActivity
+import uz.wiut.lineup.lineup.ui.common.fragment.BaseFragment
+import uz.wiut.lineup.lineup.ui.main.HomeActivity
 import uz.wiut.lineup.lineup.ui.sign_up_in.mvp.SignUp.SignUpFragmentPresenterImpl
 import uz.wiut.lineup.lineup.ui.sign_up_in.mvp.SignUp.SignUpFragmentView
 import uz.wiut.lineup.lineup.utils.Constants
 import javax.inject.Inject
 
 
-class SignUpFragment : DaggerFragment(), SignUpFragmentView {
+class SignUpFragment : BaseFragment(), SignUpFragmentView {
 
     @Inject
     lateinit var presenter: SignUpFragmentPresenterImpl
 
-    @BindView(R.id.edName)
-    lateinit var etName: CustomEditText
-    @BindView(R.id.edPhone)
-    lateinit var etPhoen: CustomEditText
-    @BindView(R.id.edPassword)
-    lateinit var etPassword: CustomEditText
-//    @BindView(R.id.etVarif)
-//    lateinit var etVarif: EditText
-    @BindView(R.id.btnSignUp)
-    lateinit var btnSignUp: Button
-//    @BindView(R.id.btnSignUp)
-//    lateinit var btnSignUp: Button
+    @BindView(R.id.edName)lateinit var edName: CustomEditText
+    @BindView(R.id.edPhone)lateinit var edPhone: CustomEditText
+    @BindView(R.id.edPassword)lateinit var edPassword: CustomEditText
+    @BindView(R.id.btnSignUp)lateinit var btnSignUp: Button
+    @BindView(R.id.llGradContainer) lateinit var  llGradContainer : LinearLayout
+    @BindView(R.id.llWorkingContainer) lateinit var  llWorkingContainer : LinearLayout
+    @BindView(R.id.tvSignInBtn) lateinit var  tvSignInBtn : TextView
+    @BindView(R.id.edVerify) lateinit var  edVerify : CustomEditText
+    @BindView(R.id.llThreeEDContainer) lateinit var  llThreeEDContainer : LinearLayout
+    @BindView(R.id.btnVerify) lateinit var  btnVeify : Button
 
-//    @BindView(R.id.btnVerify)
-//    lateinit var btnVerify: Button
+    companion object {
+        @JvmStatic
+        fun newInstance() = SignUpFragment()
+    }
 
-    private var listener: SignInFragment.OnSignInUpListener? = null
-    private var mAuth: FirebaseAuth? = null
-    private lateinit var mCallbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks;
-    lateinit var mVerificationId: String
-    private var mResendToken : PhoneAuthProvider.ForceResendingToken? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mAuth = FirebaseAuth.getInstance();
-        arguments?.let {
-            listener = it.getSerializable(Constants.SIGN_CLICK_LISTENER) as SignInFragment.OnSignInUpListener
-        }
     }
 
     override fun onStart() {
         super.onStart()
-        val currentUser = mAuth!!.currentUser
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-
         val view = inflater.inflate(R.layout.fragment_sign_up, container, false) as View
         ButterKnife.bind(this, view)
-        etPhoen = view.findViewById<View>(R.id.edPhone) as CustomEditText
-        etPassword = view.findViewById<View>(R.id.edPassword) as CustomEditText
-        mCallbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks(){
-            override fun onVerificationCompleted(credential: PhoneAuthCredential) {
-                Log.d(TAG, "onVerificationCompleted:" + credential)
-                signInWithPhoneAuthCredential(credential);
-            }
-            override fun onVerificationFailed(e: FirebaseException) {
-                Log.w(TAG, "onVerificationFailed", e);
-                if (e is FirebaseAuthInvalidCredentialsException) {
-                    // Invalid request
-                    Log.w(TAG, "Invalid request", e);
-                } else if (e is FirebaseTooManyRequestsException) {
-                    // The SMS quota for the project has been exceeded
-                    Log.w(TAG, "he SMS quota for the project has been exceeded", e);
-                }
-            }
-            override fun onCodeSent(verificationId:String, token:PhoneAuthProvider.ForceResendingToken) {
-                Log.d(TAG, "onCodeSent:" + verificationId);
-                mVerificationId = verificationId;
-                mResendToken = token;
-            }
-        }
-
-//        var tMgr = context.applicationContext.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-//        if (ActivityCompat.checkSelfPermission(activity, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
-//            var mPhoneNumber = tMgr.line1Number
-//            etPassword.setText(mPhoneNumber.toString())
-//        } else {
-//
-//        }
-//        var hint = HintR
+        initUI()
         return view
+    }
+
+    private fun initUI() {
+        setUpGradientBg()
+        setETIcons()
+    }
+
+    private fun setUpGradientBg() {
+        RevelyGradient.linear()
+                .colors(Constants.arrOfCols)
+                .angle(45f)
+                .onBackgroundOf(llGradContainer)
+    }
+
+    private fun setETIcons() {
+        edName.setIcon(R.drawable.ic_user_no_cicle)
+        edPhone.setIcon(R.drawable.ic_smartphone)
+        edPassword.setIcon(R.drawable.ic_locked)
+        edPassword.changeInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD)
+        edVerify.setIcon(R.drawable.ic_key)
+    }
+
+    @OnClick(R.id.tvSignInBtn)
+    fun signInBtnClicked() {
+        closeFragment()
     }
 
     @OnClick(R.id.btnSignUp)
     fun signUpClicked() {
+        var name = edName.getText()
+        var phone = edPhone.getText()
+        var pass = edPassword.text.toString()
 
-//        var phone = etPhoen.text.toString()
-//        var pass = etPassword.text.toString()
-
-        //todo uncomment this later, IMPORTANT PART
-//        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-//                phone,                  // Phone number to verify
-//                60,                  // Timeout duration
-//                TimeUnit.SECONDS,       // Unit of timeout
-//                this.activity,          // Activity (for callback binding)
-//                mCallbacks
-//        );
+        presenter.onSignUpClicked(name, phone, pass, activity)
     }
 
-    private fun verifyPhoneNumberWithCode(verificationId:String , code:String ) {
-         // [START verify_with_code]
-        var credential = PhoneAuthProvider.getCredential(verificationId, code);
-        // [END verify_with_code]
-        signInWithPhoneAuthCredential(credential);
+    @OnClick(R.id.btnVerify)
+    fun verifyClicked() {
+        presenter.onVerifyClicked(edVerify.getText())
+    }
+
+    override fun message(message: String) {
+        navigator.makeToask(context, message)
+    }
+
+    override fun log(message: String) {
+        Log.d(Constants.DEBUG, "->>>> ${message}")
+    }
+
+    override fun showVerification() {
+        btnSignUp.visibility = View.GONE
+        llThreeEDContainer.visibility = View.GONE
+        edVerify.visibility = View.VISIBLE
+        btnVeify.visibility = View.VISIBLE
+    }
+
+    override fun hideVerification() {
+        btnSignUp.visibility = View.VISIBLE
+        llThreeEDContainer.visibility = View.VISIBLE
+        edVerify.visibility = View.GONE
+        btnVeify.visibility = View.GONE
+    }
+
+    override fun startActivity(activity: BaseActivity) {
+        navigator.startActivityWithTaskClear(context, activity)
+    }
+
+    override fun closeFragment() {
+        navigator.closeFragment(activity)
     }
 
 
-
-
-
-
-    private fun signInWithPhoneAuthCredential(credential:PhoneAuthCredential) {
-        mAuth!!.signInWithCredential(credential)
-                .addOnCompleteListener(activity) { task ->
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithCredential:success");
-                            var user = task.getResult().getUser() as FirebaseUser;
-                        } else {
-                            Log.w(TAG, "signInWithCredential:failure", task.getException());
-                        }
-                }
-    }
-
-    // TODO IMPORTANT
-//    @OnClick(R.id.btnVerify)
-//    fun veifyClicked() {
-//        verifyPhoneNumberWithCode(mVerificationId, etVarif.text.toString());
-//    }
-
-
-    companion object {
-        @JvmStatic
-        fun newInstance(listnr: SignInFragment.OnSignInUpListener) =
-                SignUpFragment().apply {
-                    arguments = Bundle().apply {
-                        putSerializable(Constants.SIGN_CLICK_LISTENER, listnr)
-                    }
-                }
-    }
 }

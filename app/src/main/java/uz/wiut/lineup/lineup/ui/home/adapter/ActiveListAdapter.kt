@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import uz.wiut.lineup.lineup.R
 import uz.wiut.lineup.lineup.ui.home.OrganizationDetailsActivity
-import uz.wiut.lineup.lineup.ui.model.RegisteredOrganization
+import uz.wiut.lineup.lineup.model.RegisteredOrganization
 import uz.wiut.lineup.lineup.utils.Constants
 
 /**

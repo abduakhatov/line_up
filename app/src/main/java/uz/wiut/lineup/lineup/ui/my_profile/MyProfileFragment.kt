@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.*
 import butterknife.BindView
 import butterknife.ButterKnife
+import butterknife.OnCheckedChanged
 import butterknife.OnClick
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_sign_in.*
@@ -33,8 +34,9 @@ class MyProfileFragment : BaseFragment(), MyProfileFragmentView {
     @BindView(R.id.edPassword) lateinit var edPassword: CustomEditText
     @BindView(R.id.edName) lateinit var edName: CustomEditText
     @BindView(R.id.btnSave) lateinit var btnSave: Button
-    @BindView(R.id.swIsMale) lateinit var swIsFemale: Switch
     @BindView(R.id.rlTvNameContainer) lateinit var rlTvNameContainer: RelativeLayout
+    @BindView(R.id.rbnWoman) lateinit var rbnWoman: RadioButton
+    @BindView(R.id.rbnMan) lateinit var rbnMan: RadioButton
 
     private var user: User = User()
 
@@ -76,20 +78,17 @@ class MyProfileFragment : BaseFragment(), MyProfileFragmentView {
     private fun changeGender() {
         if (user.isMale) {
             vAvatar.setBackground(ContextCompat.getDrawable(context, R.drawable.ic_man))
-            swIsFemale.isChecked = false
-            swIsFemale.text = "Male"
+            rbnMan.isChecked = true
         } else {
             vAvatar.setBackground(ContextCompat.getDrawable(context, R.drawable.ic_woman))
-            swIsFemale.isChecked = true
-            swIsFemale.text = "Female"
+            rbnWoman.isChecked = true
         }
     }
 
     private fun getChanges(){
-        user.isMale = !swIsFemale.isChecked
+        user.isMale = rbnMan.isChecked
         if(edName.visibility == View.VISIBLE) user.name = edName.getText()
         user.password = edPassword.getText()
-
     }
 
     override fun setData(user: User) {
@@ -111,7 +110,12 @@ class MyProfileFragment : BaseFragment(), MyProfileFragmentView {
         tvName.text = user.name
     }
 
-
+    @OnCheckedChanged(R.id.rbnMan)
+    fun radioButtonClicked(){
+        if(rbnMan.isChecked) user.isMale = true
+        else user.isMale = false
+        changeGender()
+    }
 
     @OnClick(R.id.imEdit)
     fun onEditClick(){

@@ -28,16 +28,15 @@
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:layout_marginTop="-80dp"
-            android:elevation="4dp"
-            android:background="@drawable/just_cycle">
+            android:background="@drawable/just_cycle"
+            android:elevation="4dp">
 
             <View
                 android:id="@+id/vAvatar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="20dp"
-                android:background="@drawable/ic_woman"
-                />
+                android:background="@drawable/ic_woman" />
 
         </FrameLayout>
 
@@ -47,7 +46,7 @@
             android:layout_below="@+id/flPhotoContainer"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
 
             <RelativeLayout
@@ -118,23 +117,45 @@
                 app:isPassword="true"
                 app:setRigthText="Password" />
 
-            <Switch
-                android:id="@+id/swIsMale"
-                android:checked="true"
+            <RelativeLayout
+                android:id="@+id/rlGender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/grad_trans"
-                android:text="Female"
-                />
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
 
-            <!--<RelativeLayout-->
-                <!--android:id="@+id/rlGender"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content">-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="sans-serif"
+                    android:text="Private Details"
+                    android:textColor="@color/grad_trans"
+                    android:textSize="14sp" />
 
-                <!--<Text-->
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:orientation="horizontal">
 
-            <!--</RelativeLayout>-->
+                    <RadioButton
+                        android:id="@+id/rbnWoman"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:checked="true"
+                        android:text="Woman"
+                        android:textColor="@color/grad" />
+
+                    <RadioButton
+                        android:id="@+id/rbnMan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Man"
+                        android:textColor="@color/grad" />
+                </RadioGroup>
+            </RelativeLayout>
 
             <Button
                 android:id="@+id/btnSave"

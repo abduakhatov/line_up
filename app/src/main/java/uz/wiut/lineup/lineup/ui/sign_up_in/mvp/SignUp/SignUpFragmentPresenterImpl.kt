@@ -30,8 +30,8 @@ class SignUpFragmentPresenterImpl : SignUpFragmentPresenter, PhoneAuthProvider.O
     private lateinit var mVerificationId: String
     private lateinit var activity: Activity
     private lateinit var mName: String
-    private lateinit var mPhone: String
-    private lateinit var mPass: String
+    private var mPhone: String? = null
+    private var mPass: String? = null
 
 
     @Inject
@@ -39,16 +39,6 @@ class SignUpFragmentPresenterImpl : SignUpFragmentPresenter, PhoneAuthProvider.O
         mAuth = FirebaseAuth.getInstance()
         dbRef = FirebaseDatabase.getInstance().getReference()
         dbClients = dbRef.child("v1/usersList/clients")
-
-        RxBus2.subscribe(RxBus2.SIGN_IN, this, Consumer { o ->
-            if (o is Authentification) {
-                isCalledFromSignInfragment = true
-                mPhone = o.phone
-                mPass = o.password
-                view.showVerification()
-                sendCode()
-            }
-        })
     }
 
     override fun onSignUpClicked(name: String, phone: String, pass: String, activity: Activity) {
@@ -65,11 +55,23 @@ class SignUpFragmentPresenterImpl : SignUpFragmentPresenter, PhoneAuthProvider.O
         view.showVerification()
     }
 
+    override fun onUserVerificationCalledFromSignInFrgmt(auth : Authentification, activity: Activity) {
+        isCalledFromSignInfragment = true
+        mPhone = auth.phone
+        mPass = auth.password
+        this.activity = activity
+        view.showVerification()
+        sendCode()
+    }
+
     private fun sendCode() {
-        if (mAuth!!.currentUser != null)
-            mAuth?.signOut()
+        mAuth = FirebaseAuth.getInstance()
+//        if (uid == null || mAuth == null)
+        mAuth?.signOut()
+//        var uid = mAuth?.currentUser?.uid
+
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                mPhone,                  // Phone number to verify
+                mPhone!!,                  // Phone number to verify
                 60,                 // Timeout duration
                 TimeUnit.SECONDS,       // Unit of timeout
                 this.activity,          // Activity (for callback binding)

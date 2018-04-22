@@ -34,6 +34,7 @@ class HomeFragment : DaggerFragment(), HomeFragmentView {
     @BindView(R.id.llGradContainer)
     lateinit var llGradContainer : LinearLayout
 
+
     private val data = arrayListOf<RegisteredOrganization>()
 
     override fun onCreate(savedInstanceState: Bundle?) = super.onCreate(savedInstanceState)

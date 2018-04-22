@@ -47,7 +47,6 @@ class HomeActivity : BaseActivity(), HomeActivityView {
         setContentView(R.layout.content_main)
         ButterKnife.bind(this)
         initUI()
-        changeFragment(HomeFragment.newInstance())
     }
 
     fun initUI(){

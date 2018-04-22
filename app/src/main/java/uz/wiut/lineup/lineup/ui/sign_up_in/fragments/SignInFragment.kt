@@ -17,8 +17,8 @@ import butterknife.ButterKnife
 import butterknife.OnClick
 import co.revely.gradient.RevelyGradient
 import uz.wiut.component.utils.RxBus2
+import uz.wiut.component.utils.events.Authentification
 import uz.wiut.component.utils.events.ChangeToolbarTitle
-import uz.wiut.component.utils.ui.CustomEditTextListener
 import uz.wiut.component.utils.ui.customEditText.CustomEditText
 import uz.wiut.lineup.lineup.R
 import uz.wiut.lineup.lineup.ui.common.fragment.BaseFragment
@@ -90,7 +90,7 @@ class SignInFragment : BaseFragment(), SignInFragmentView {
     private fun setETIcons() {
         edPhone.setIcon(R.drawable.ic_smartphone)
         edPassword.setIcon(R.drawable.ic_key)
-        edPassword.changeInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD)
+        edPassword.passWordInput(true)
     }
 
     @OnClick(R.id.btnSignIn)
@@ -114,11 +114,15 @@ class SignInFragment : BaseFragment(), SignInFragmentView {
     }
 
     override fun signIn() {
-        navigator.startActivityWithTaskClear(context, HomeActivity())
+        navigator.startActivityWithTaskClear(this.context, HomeActivity())
     }
 
     override fun signUp() {
-        RxBus2.publish(RxBus2.TOOLBAR_HIDE, ChangeFragment(SignUpFragment.newInstance()))
+        RxBus2.publish(RxBus2.TOOLBAR_HIDE, ChangeFragment(SignUpFragment.newInstance(Authentification(), true)))
+    }
+
+    override fun signInWithCodeVerification(auth: Authentification) {
+        RxBus2.publish(RxBus2.TOOLBAR_HIDE, ChangeFragment(SignUpFragment.newInstance(auth, false)))
     }
 
     override fun forgotPassword() {
@@ -136,5 +140,11 @@ class SignInFragment : BaseFragment(), SignInFragmentView {
     override fun message(message: String) {
         navigator.makeToask(context, message)
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        presenter
+    }
+
 
 }

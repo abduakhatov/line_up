@@ -22,7 +22,7 @@ import uz.wiut.component.R;
  * Created by Shohruh on 19-Apr-18.
  */
 
-public class CustomEditText extends FrameLayout{
+public class CustomEditText extends FrameLayout {
 
     private TextView tvTitle;
     private RelativeLayout rlBody;
@@ -65,7 +65,7 @@ public class CustomEditText extends FrameLayout{
 
         String title = typedArr.getString(R.styleable.CustomEditText_title);
         if (title == null || title == "") {
-             String hint = typedArr.getString(R.styleable.CustomEditText_hint);
+            String hint = typedArr.getString(R.styleable.CustomEditText_hint);
             tvContent.setHint(hint != null ? hint : "Hint");
             tvContent.setText(null);
         } else {
@@ -73,17 +73,17 @@ public class CustomEditText extends FrameLayout{
             tvContent.setText(null);
         }
 
-         boolean rightContVisblty = typedArr.getBoolean(R.styleable.CustomEditText_hideRightContainer, false);
+        boolean rightContVisblty = typedArr.getBoolean(R.styleable.CustomEditText_hideRightContainer, false);
         if (rightContVisblty) {
-            flRightView.setVisibility( View.VISIBLE );
+            flRightView.setVisibility(View.VISIBLE);
 
-             boolean iconVisblt = typedArr.getBoolean(R.styleable.CustomEditText_iconHide, false);
+            boolean iconVisblt = typedArr.getBoolean(R.styleable.CustomEditText_iconHide, false);
             if (iconVisblt) {
                 ivIcon.setVisibility(View.GONE);
                 tvEditTextValue.setVisibility(View.VISIBLE);
 
-                 String rightText = typedArr.getString(R.styleable.CustomEditText_setRigthText);
-                tvEditTextValue.setText( (rightText != null || rightText != "") ? rightText : "Content" );
+                String rightText = typedArr.getString(R.styleable.CustomEditText_setRigthText);
+                tvEditTextValue.setText((rightText != null || rightText != "") ? rightText : "Content");
             } else {
                 ivIcon.setVisibility(View.VISIBLE);
 //                         iconSrc = typedArr.getDrawable(R.styleable.CustomEditText_setIcon)
@@ -94,7 +94,7 @@ public class CustomEditText extends FrameLayout{
             flRightView.setVisibility(View.GONE);
         }
 
-        tvContent.setInputType( (typedArr.getBoolean(R.styleable.CustomEditText_isPassword, false)) ? InputType.TYPE_TEXT_VARIATION_PASSWORD : InputType.TYPE_CLASS_TEXT );
+        tvContent.setInputType((typedArr.getBoolean(R.styleable.CustomEditText_isPassword, false)) ? InputType.TYPE_TEXT_VARIATION_PASSWORD : InputType.TYPE_CLASS_TEXT);
         typedArr.recycle();
 
     }
@@ -103,11 +103,22 @@ public class CustomEditText extends FrameLayout{
         ivIcon.setImageDrawable(ContextCompat.getDrawable(getContext(), drawable));
     }
 
-    public void changeInputType(int inputType){
-        tvContent.setInputType(inputType);
+    public void passWordInput(boolean isPassInput) {
+        if (isPassInput)
+            tvContent.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        else
+            tvContent.setInputType(InputType.TYPE_CLASS_TEXT);
+
     }
 
-    public String getText(){
+    public String getText() {
         return tvContent.getText().toString();
+    }
+    public void setText(String value) {
+        tvContent.setText(value);
+    }
+
+    public void disableEditTextInput() {
+        tvContent.setInputType(InputType.TYPE_NULL);
     }
 }

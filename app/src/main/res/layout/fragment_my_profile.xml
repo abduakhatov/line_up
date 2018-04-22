@@ -28,15 +28,16 @@
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:layout_marginTop="-80dp"
+            android:elevation="4dp"
             android:background="@drawable/just_cycle">
 
             <View
+                android:id="@+id/vAvatar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="20dp"
-                android:background="@drawable/ic_menu_share"
-                android:backgroundTint="@color/grad"
-                android:elevation="4dp" />
+                android:background="@drawable/ic_woman"
+                />
 
         </FrameLayout>
 
@@ -50,9 +51,10 @@
             android:orientation="vertical">
 
             <RelativeLayout
+                android:id="@+id/rlTvNameContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
                 android:paddingBottom="10dp"
                 android:paddingTop="10dp">
 
@@ -67,6 +69,7 @@
                     android:textSize="22sp" />
 
                 <ImageView
+                    android:id="@+id/imEdit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/tvName"
@@ -74,17 +77,18 @@
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/tvName"
                     android:foregroundGravity="center"
-                    android:src="@drawable/ic_menu_share" />
+                    android:src="@drawable/ic_edit" />
             </RelativeLayout>
 
-            <uz.wiut.component.utils.ui.CustomEditText
+            <uz.wiut.component.utils.ui.customEditText.CustomEditText
+                android:id="@+id/edName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 app:hideRightContainer="true"
                 app:hint="Name"
                 app:iconHide="true"
-                app:setRigthText="Aziz(a) Abdullaev(a)" />
+                app:setRigthText="Name" />
 
 
             <TextView
@@ -95,7 +99,8 @@
                 android:textColor="@color/dark_gray_text"
                 android:textSize="16sp" />
 
-            <uz.wiut.component.utils.ui.CustomEditText
+            <uz.wiut.component.utils.ui.customEditText.CustomEditText
+                android:id="@+id/edPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:hideRightContainer="true"
@@ -103,15 +108,33 @@
                 app:iconHide="true"
                 app:setRigthText="Phone Number" />
 
-            <uz.wiut.component.utils.ui.CustomEditText
+            <uz.wiut.component.utils.ui.customEditText.CustomEditText
+                android:id="@+id/edPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:hideRightContainer="true"
-                app:hint="my_pass"
+                app:hint="123456pass"
                 app:iconHide="true"
-                app:isPassword="false"
+                app:isPassword="true"
                 app:setRigthText="Password" />
 
+            <Switch
+                android:id="@+id/swIsMale"
+                android:checked="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grad_trans"
+                android:text="Female"
+                />
+
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/rlGender"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content">-->
+
+                <!--<Text-->
+
+            <!--</RelativeLayout>-->
 
             <Button
                 android:id="@+id/btnSave"

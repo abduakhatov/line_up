@@ -5,8 +5,9 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/grad</item>
         <item name="android:textColor">#000</item>
+
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -21,4 +22,10 @@
     <style name="MyTheme.TranslucentNavigation" parent="AppTheme">
 
     </style>
+
+    <style name="SwitchTheme" parent="AppTheme">
+        <item name="android:colorForeground">#148E13</item>
+        <item name="android:colorBackground">#148E13</item>
+    </style>
+
 </resources>

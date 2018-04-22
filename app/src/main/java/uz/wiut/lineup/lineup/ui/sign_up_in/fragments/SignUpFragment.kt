@@ -14,14 +14,11 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
 import co.revely.gradient.RevelyGradient
-import io.reactivex.functions.Consumer
-import uz.wiut.component.utils.RxBus2
 import uz.wiut.component.utils.events.Authentification
 import uz.wiut.component.utils.ui.customEditText.CustomEditText
 import uz.wiut.lineup.lineup.R
 import uz.wiut.lineup.lineup.ui.common.BaseActivity
 import uz.wiut.lineup.lineup.ui.common.fragment.BaseFragment
-import uz.wiut.lineup.lineup.ui.main.HomeActivity
 import uz.wiut.lineup.lineup.ui.sign_up_in.mvp.SignUp.SignUpFragmentPresenterImpl
 import uz.wiut.lineup.lineup.ui.sign_up_in.mvp.SignUp.SignUpFragmentView
 import uz.wiut.lineup.lineup.utils.Constants
@@ -44,14 +41,27 @@ class SignUpFragment : BaseFragment(), SignUpFragmentView {
     @BindView(R.id.llThreeEDContainer) lateinit var  llThreeEDContainer : LinearLayout
     @BindView(R.id.btnVerify) lateinit var  btnVeify : Button
 
+    private var isForSignUp : Boolean = false
+    private lateinit var auth : Authentification
+
     companion object {
         @JvmStatic
-        fun newInstance() = SignUpFragment()
+        fun newInstance(authentification: Authentification, isForSignUp: Boolean) =
+                SignUpFragment().apply {
+                    arguments = Bundle().apply {
+                        putSerializable(Constants.AUTH, authentification)
+                        putSerializable(Constants.IS_FOR_SIGN_UP, isForSignUp)
+                    }
+                }
     }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        arguments?.let {
+            isForSignUp = it.getSerializable(Constants.IS_FOR_SIGN_UP) as Boolean
+            auth = it.getSerializable(Constants.AUTH) as Authentification
+        }
     }
 
     override fun onStart() {
@@ -69,6 +79,8 @@ class SignUpFragment : BaseFragment(), SignUpFragmentView {
     private fun initUI() {
         setUpGradientBg()
         setETIcons()
+
+        if (!isForSignUp) presenter.onUserVerificationCalledFromSignInFrgmt(auth, activity)
     }
 
     private fun setUpGradientBg() {
@@ -82,7 +94,7 @@ class SignUpFragment : BaseFragment(), SignUpFragmentView {
         edName.setIcon(R.drawable.ic_user_no_cicle)
         edPhone.setIcon(R.drawable.ic_smartphone)
         edPassword.setIcon(R.drawable.ic_locked)
-        edPassword.changeInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD)
+        edPassword.passWordInput(true)
         edVerify.setIcon(R.drawable.ic_key)
     }
 

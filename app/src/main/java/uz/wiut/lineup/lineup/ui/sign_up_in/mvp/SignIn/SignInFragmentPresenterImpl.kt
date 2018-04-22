@@ -2,7 +2,6 @@ package uz.wiut.lineup.lineup.ui.sign_up_in.mvp.SignIn
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import uz.wiut.component.utils.RxBus2
 import uz.wiut.component.utils.events.Authentification
 import uz.wiut.lineup.lineup.model.User
 import javax.inject.Inject
@@ -16,20 +15,18 @@ class SignInFragmentPresenterImpl : SignInFragmentPresenter {
     @Inject
     lateinit var view: SignInFragmentView
 
-    private var mAuth: FirebaseAuth?
-    private var dbRef: DatabaseReference
-    private var dbUsersRef: DatabaseReference
+    private lateinit var mAuth: FirebaseAuth
+    private lateinit var dbRef: DatabaseReference
+    private lateinit var dbUsersRef: DatabaseReference
+    private lateinit var clientRef: DatabaseReference
     private lateinit var dbListner: ValueEventListener
     private lateinit var phoneNumber: String
     private lateinit var pass: String
 
     @Inject
     constructor() {
-        mAuth = FirebaseAuth.getInstance()
-        dbRef = FirebaseDatabase.getInstance().getReference()
-        dbUsersRef = dbRef.child("v1/usersList/clients")
+        initFirebase()
     }
-
 
     override fun onSignInClicked(phone: String, password: String) {
         phoneNumber = phone.trim()
@@ -41,6 +38,7 @@ class SignInFragmentPresenterImpl : SignInFragmentPresenter {
         }
         authernticate()
     }
+
 
     override fun onSignUpClicked() {
         view.signUp()
@@ -55,25 +53,41 @@ class SignInFragmentPresenterImpl : SignInFragmentPresenter {
     }
 
     private fun navigateToSignUp() {
-        view.signUp()
-        RxBus2.publish(RxBus2.SIGN_IN, Authentification(phoneNumber, pass))
+        view.signInWithCodeVerification(Authentification(phoneNumber, pass))
     }
 
     private fun authernticate() {
-        var uid = mAuth?.currentUser?.uid
-        if (uid == null || mAuth == null) navigateToSignUp()
+        mAuth = FirebaseAuth.getInstance()
+        var uid = mAuth.currentUser?.uid
+        if (uid == null || mAuth == null) {
+            navigateToSignUp()
+            return
+        }
 
         view.log("uid -> ${uid.toString()}")
-        dbUsersRef.child(mAuth?.currentUser?.uid).addValueEventListener(object : ValueEventListener {
+
+        dbUsersRef.child(mAuth.currentUser?.uid).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val user = dataSnapshot.getValue<User>(User::class.java)
                 view.log("Sign In Fragme db listner - IN")
                 if (user == null) return
-                if (user.password.equals(pass)) {
+
+
+                if (user.phoneNumber.equals(phoneNumber) && user.password.equals(pass)){
                     view.signIn()
-                } else {
-                    view.message("Invalid password or phone number")
                 }
+
+                if (!user.phoneNumber.equals(phoneNumber) && !user.password.equals(pass)){
+                    mAuth.signOut()
+                    initFirebase()
+                    authernticate()
+                    return
+                }
+
+                if (user.phoneNumber.equals(phoneNumber) && !user.password.equals(pass) ||
+                        !user.phoneNumber.equals(phoneNumber) && user.password.equals(pass))
+                    view.message("Invalid edPassword or phone number")
+
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
@@ -81,5 +95,12 @@ class SignInFragmentPresenterImpl : SignInFragmentPresenter {
                 view.message("Failed connecting to server!")
             }
         })
+    }
+
+
+    private fun initFirebase() {
+        mAuth = FirebaseAuth.getInstance()
+        dbRef = FirebaseDatabase.getInstance().getReference()
+        dbUsersRef = dbRef.child("v1/usersList/clients")
     }
 }

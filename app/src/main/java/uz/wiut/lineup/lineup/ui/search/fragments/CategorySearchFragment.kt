@@ -1,7 +1,6 @@
 package uz.wiut.lineup.lineup.ui.search.fragments
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -11,7 +10,7 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import dagger.android.support.DaggerFragment
 import uz.wiut.lineup.lineup.R
-import uz.wiut.lineup.lineup.model.Organization
+import uz.wiut.lineup.lineup.model.toDelete.Organzatn
 import uz.wiut.lineup.lineup.ui.search.adapter.SeachListAdapter
 import uz.wiut.lineup.lineup.ui.search.mvp.category.CategorySearchFragmentPresenterImpl
 import uz.wiut.lineup.lineup.ui.search.mvp.category.CategorySearchFragmentView
@@ -59,19 +58,19 @@ class CategorySearchFragment : DaggerFragment() , CategorySearchFragmentView{
         rvSearchList.adapter = adapter
     }
 
-    private val data = arrayListOf<Organization>()
+    private val data = arrayListOf<Organzatn>()
 
-    fun getData(): ArrayList<Organization> {
+    fun getData(): ArrayList<Organzatn> {
         for (i in 0..orgs.size - 1) {
-            data.add(Organization(orgs[i], location[i], distance[i], openClosed[i]))
+            data.add(Organzatn(orgs[i], location[i], distance[i], openClosed[i]))
         }
         return data
     }
 
     private val openClosed = booleanArrayOf(true, false, true, false, true, false, true, false)
-    private val orgs = arrayOf("Organization One", "Organization Two",
-            "Organization Three", "Organization Four", "Organization Five",
-            "Organization Six", "Organization Seven", "Organization Eight")
+    private val orgs = arrayOf("Organzatn One", "Organzatn Two",
+            "Organzatn Three", "Organzatn Four", "Organzatn Five",
+            "Organzatn Six", "Organzatn Seven", "Organzatn Eight")
     private val location = arrayOf("Tashkent, Uzbekistan", "Shymkent, Kazakhstan",
             "Tashkent, Uzbekistan", "Tashkent, Uzbekistan",
             "Samarkand, Uzbekistan", "Fergana, Uzbekistan",

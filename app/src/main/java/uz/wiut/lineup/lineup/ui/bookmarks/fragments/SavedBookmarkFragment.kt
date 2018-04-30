@@ -2,23 +2,36 @@ package uz.wiut.lineup.lineup.ui.bookmarks.fragments
 
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import butterknife.BindView
 import butterknife.ButterKnife
 import uz.wiut.lineup.lineup.R
+import uz.wiut.lineup.lineup.model.Bookmark
 import uz.wiut.lineup.lineup.model.Organization
-import uz.wiut.lineup.lineup.ui.search.adapter.SeachListAdapter
+import uz.wiut.lineup.lineup.ui.bookmarks.adapter.SavedFragmentAdapter
+import uz.wiut.lineup.lineup.ui.bookmarks.mvp.SavedFragmentPresenterImpl
+import uz.wiut.lineup.lineup.ui.bookmarks.mvp.SavedFragmentView
+import uz.wiut.lineup.lineup.ui.common.fragment.BaseFragment
+import uz.wiut.lineup.lineup.utils.Constants
+import javax.inject.Inject
 
 
-class SavedBookmarkFragment : Fragment() {
+class SavedBookmarkFragment : BaseFragment(), SavedFragmentView {
+
+    @Inject
+    lateinit var presenter: SavedFragmentPresenterImpl
 
     @BindView(R.id.rvSearchList)
     lateinit var rvSearchList: RecyclerView
+
+    private var organzationsList = arrayListOf<Organization>()
+    private var bookmarkList = arrayListOf<Bookmark>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,8 +41,18 @@ class SavedBookmarkFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_search_category, container, false)
         ButterKnife.bind(this, view)
-        initAdapter()
+        initUI()
+        presenter.subscribeRxBus()
         return view
+    }
+
+    private fun initUI() {
+        loadData()
+        initAdapter()
+    }
+
+    private fun loadData() {
+        presenter.onLoadData()
     }
 
     override fun onResume() {
@@ -37,32 +60,32 @@ class SavedBookmarkFragment : Fragment() {
         initAdapter()
     }
 
-
     private fun initAdapter() {
-        val adapter = SeachListAdapter(this.context, getData())
-        val llManager = LinearLayoutManager(this.context)
-        rvSearchList.layoutManager = llManager
+        val adapter = SavedFragmentAdapter(this.context, organzationsList, bookmarkList)
+        rvSearchList.layoutManager = LinearLayoutManager(this.context)
         rvSearchList.adapter = adapter
+        adapter.notifyDataSetChanged()
     }
 
-    private val data = arrayListOf<Organization>()
-
-    fun getData(): ArrayList<Organization> {
-        for (i in 0..orgs.size - 1) {
-            data.add(Organization(orgs[i], location[i], distance[i], openClosed[i]))
-        }
-        return data
+    override fun setBookmarkData(bookmarkList: ArrayList<Bookmark>) {
+        this.bookmarkList = bookmarkList
     }
 
-    private val openClosed = booleanArrayOf(true, false, true, false, true, false, true, false)
-    private val orgs = arrayOf("Organization One", "Organization Two",
-            "Organization Three", "Organization Four", "Organization Five",
-            "Organization Six", "Organization Seven", "Organization Eight")
-    private val location = arrayOf("Tashkent, Uzbekistan", "Shymkent, Kazakhstan",
-            "Tashkent, Uzbekistan", "Tashkent, Uzbekistan",
-            "Samarkand, Uzbekistan", "Fergana, Uzbekistan",
-            "Namangan, Uzbekistan", "Tashkent, Uzbekistan")
-    private val distance = floatArrayOf(1f, 2f, 3f, 4f, 5f, 6f, 7f, 8f)
+    override fun setOrganizationData(organization: ArrayList<Organization>) {
+        organzationsList = organization
+        initAdapter()
+    }
 
+    override fun log(message: String) {
+        Log.d(Constants.DEBUG, "->>>> ${message}")
+    }
 
+    override fun message(message: String) {
+        navigator.makeToask(context, message)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        presenter.onDestroy()
+    }
 }

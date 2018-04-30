@@ -16,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+
 import uz.wiut.component.R;
 
 /**
@@ -38,6 +40,10 @@ public class CustomEditText extends FrameLayout {
     public CustomEditText(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
+
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String res = new SimpleDateFormat("yyyy-MM-dd").format(System.currentTimeMillis());
+
     }
 
     public CustomEditText(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {

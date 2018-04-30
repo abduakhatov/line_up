@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.SEND_SMS"/>
 
     <application
         android:name=".dagger.inject.App"
@@ -26,7 +28,7 @@
         <activity android:name=".ui.message.MessagesActivity" />
          <activity android:name=".ui.sign_up_in.SignInUpActivity" />
          <activity android:name=".ui.main.HomeActivity" />
-         <activity android:name=".ui.home.OrganizationDetailsActivity" />
+         <activity android:name=".ui.organizationDetails.OrganizationDetailsActivity" />
         <!-- <activity android:name=".ui.test.nav_bar_test.Main2Activity"></activity> -->
     </application>
 

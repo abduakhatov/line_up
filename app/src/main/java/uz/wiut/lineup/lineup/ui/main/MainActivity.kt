@@ -22,7 +22,7 @@ import butterknife.ButterKnife
 import uz.wiut.lineup.lineup.R
 import uz.wiut.lineup.lineup.ui.bookmarks.BookmarkFragment
 import uz.wiut.lineup.lineup.ui.common.BaseActivity
-import uz.wiut.lineup.lineup.ui.home.fragments.HomeFragment
+import uz.wiut.lineup.lineup.ui.home.HomeFragment
 import uz.wiut.lineup.lineup.ui.main.pv.MainActivityPresenterImpl
 import uz.wiut.lineup.lineup.ui.main.pv.MainActivityView
 import uz.wiut.lineup.lineup.ui.my_profile.MyProfileFragment
@@ -85,7 +85,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         bottomNavigation.setCurrentItem(0)
         bottomNavigation.setOnTabSelectedListener(object:AHBottomNavigation.OnTabSelectedListener{
             override fun onTabSelected(position:Int, wasSelected:Boolean):Boolean {
-                //TODO: update Fragment here
                 // remove notification badge
                 val lastItemPos = bottomNavigation.getItemsCount() - 1
                 if (notificationVisible && position == lastItemPos)

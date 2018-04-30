@@ -18,7 +18,7 @@ import uz.wiut.lineup.lineup.R
 import uz.wiut.lineup.lineup.ui.bookmarks.BookmarkFragment
 import uz.wiut.component.utils.ui.NoSwipePager
 import uz.wiut.lineup.lineup.ui.common.BaseActivity
-import uz.wiut.lineup.lineup.ui.home.fragments.HomeFragment
+import uz.wiut.lineup.lineup.ui.home.HomeFragment
 import uz.wiut.lineup.lineup.utils.Constants
 import uz.wiut.lineup.lineup.ui.home.adapter.BottomBarAdapter
 import uz.wiut.lineup.lineup.ui.main.pv.HomeActivityPresenterImpl

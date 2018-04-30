@@ -26,7 +26,6 @@ class TestActivity : BaseActivity(), TestActivityPresenterView {
         var tv: TextView = TextView(this)
         tv.setText("Helloo")
         tv.setOnClickListener(View.OnClickListener {
-            // todo
             presenter.touch()
             navigator.startActivity(this, this)
         })

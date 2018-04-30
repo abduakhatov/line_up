@@ -100,7 +100,7 @@ class SignUpFragmentPresenterImpl : SignUpFragmentPresenter, PhoneAuthProvider.O
         view.log("onVerificationFailed ${e}")
         authFailed = true
         if (e is FirebaseAuthInvalidCredentialsException) {
-            view.log("Invalid request ${e}") // tODO Invalid request set error msg here
+            view.log("Invalid request ${e}")
         } else if (e is FirebaseTooManyRequestsException) {
             view.log("he SMS quota for the project has been exceeded ${e}")
         }

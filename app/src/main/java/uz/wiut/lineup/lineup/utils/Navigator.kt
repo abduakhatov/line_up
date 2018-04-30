@@ -3,6 +3,7 @@ package uz.wiut.lineup.lineup.utils
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
@@ -11,7 +12,12 @@ import android.widget.Toast
 import uz.wiut.lineup.lineup.R
 import uz.wiut.lineup.lineup.ui.common.BaseActivity
 import uz.wiut.lineup.lineup.ui.sign_up_in.SignInUpActivity
+import java.io.Serializable
 import javax.inject.Inject
+import android.support.v4.content.ContextCompat.startActivity
+import uz.wiut.component.utils.RxBus2
+import uz.wiut.lineup.lineup.utils.events.OrgDetails
+
 
 /**
  * Created by Shohruh on 07-Mar-18.
@@ -36,6 +42,12 @@ class Navigator {
     fun startActivityByContext(context: Context) {
         val intent = Intent(context, context::class.java)
         context.startActivity(intent)
+    }
+
+    fun startActivityWithBundle(context: Context, toCall: BaseActivity, bundle: OrgDetails) {
+        val i = Intent(context, toCall::class.java)
+        i.putExtra(Constants.ORG_DETAIL, bundle)
+        context.startActivity(i)
     }
 
     fun startActivityWithTaskClear(context: Context, toCall: BaseActivity) {

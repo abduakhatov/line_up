@@ -59,9 +59,9 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="5dp"
+                android:src="@drawable/ic_like"
                 android:layout_marginRight="0dp"
-                android:layout_marginTop="5dp"
-                android:src="@drawable/ic_android_black_24dp" />
+                android:layout_marginTop="5dp" />
         </RelativeLayout>
 
         <TextView
@@ -81,7 +81,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -108,6 +108,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/llTitleContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -139,13 +140,13 @@
 
         <LinearLayout
             android:id="@+id/llHistoryContainer"
-            android:visibility="visible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:orientation="horizontal"
             android:paddingLeft="3dp"
-            android:layout_marginTop="15dp"
-            android:paddingRight="1dp">
+            android:paddingRight="1dp"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/tvLastVisitTitle"
@@ -153,8 +154,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:fontFamily="sans-serif-light"
-                android:paddingRight="10dp"
                 android:gravity="right"
+                android:paddingRight="10dp"
                 android:text="Last Visit:"
                 android:textColor="@color/redish" />
 
@@ -166,8 +167,8 @@
                 android:fontFamily="sans-serif-light"
                 android:gravity="center"
                 android:text="Jan 12, 2017 (12 months ago)"
-                android:textStyle="bold"
-                android:textColor="@color/redish" />
+                android:textColor="@color/redish"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>

@@ -6,16 +6,22 @@ import dagger.android.support.AndroidSupportInjectionModule;
 import uz.wiut.lineup.lineup.dagger.inject.inject.PerActivity;
 import uz.wiut.lineup.lineup.dagger.inject.inject.PerChildFragment;
 import uz.wiut.lineup.lineup.dagger.inject.inject.PerFragment;
+import uz.wiut.lineup.lineup.ui.bookmarks.BookmarkFragment;
+import uz.wiut.lineup.lineup.ui.bookmarks.di.BookmarkFragmentModule;
+import uz.wiut.lineup.lineup.ui.bookmarks.di.fragments.HistoryFragmentModule;
+import uz.wiut.lineup.lineup.ui.bookmarks.di.fragments.SavedFragmentModule;
+import uz.wiut.lineup.lineup.ui.bookmarks.fragments.HistoryOfBookmarksFragment;
+import uz.wiut.lineup.lineup.ui.bookmarks.fragments.SavedBookmarkFragment;
 import uz.wiut.lineup.lineup.ui.common.BaseActivity;
 import uz.wiut.lineup.lineup.ui.common.di.BaseActivityModule;
 import uz.wiut.lineup.lineup.ui.common.di.BaseFragmentModule;
 import uz.wiut.lineup.lineup.ui.common.fragment.BaseFragment;
-import uz.wiut.lineup.lineup.ui.home.OrganizationDetailsActivity;
+import uz.wiut.lineup.lineup.ui.organizationDetails.OrganizationDetailsActivity;
 import uz.wiut.lineup.lineup.ui.home.di.HomeFragmentModule;
-import uz.wiut.lineup.lineup.ui.home.di.OrganizationDetailsActivityModule;
-import uz.wiut.lineup.lineup.ui.home.di.OrganizationDetailsFragmentModule;
-import uz.wiut.lineup.lineup.ui.home.fragments.HomeFragment;
-import uz.wiut.lineup.lineup.ui.home.fragments.OrganizationDetailsFragment;
+import uz.wiut.lineup.lineup.ui.organizationDetails.di.OrganizationDetailsActivityModule;
+import uz.wiut.lineup.lineup.ui.organizationDetails.di.OrganizationDetailsFragmentModule;
+import uz.wiut.lineup.lineup.ui.home.HomeFragment;
+import uz.wiut.lineup.lineup.ui.organizationDetails.fragments.OrganizationDetailsFragment;
 import uz.wiut.lineup.lineup.ui.main.HomeActivity;
 import uz.wiut.lineup.lineup.ui.main.MainActivity;
 import uz.wiut.lineup.lineup.ui.main.di.HomeActivityModule;
@@ -113,6 +119,10 @@ public abstract class MainModule {
     @ContributesAndroidInjector(modules = OrganizationDetailsFragmentModule.class)
     abstract OrganizationDetailsFragment contributeOrganizationDetailsFragment();
 
+    @PerFragment
+    @ContributesAndroidInjector(modules = BookmarkFragmentModule.class)
+    abstract BookmarkFragment contributeBookmarkFragment();
+
 
     // Child  Fragments
     @PerChildFragment
@@ -126,6 +136,14 @@ public abstract class MainModule {
     @PerChildFragment
     @ContributesAndroidInjector(modules = MapSearchFragmentModule.class)
     abstract MapSearchFragment contributeMapSearchFragment();
+
+    @PerChildFragment
+    @ContributesAndroidInjector(modules = SavedFragmentModule.class)
+    abstract SavedBookmarkFragment contributeSavedFragmentFragment();
+
+    @PerChildFragment
+    @ContributesAndroidInjector(modules = HistoryFragmentModule.class)
+    abstract HistoryOfBookmarksFragment contributeHistoryFragment();
 
 
 }

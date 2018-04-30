@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#0072ff</color>
     <color name="redish">#D81B60</color>
+    <color name="green">#2ff50c</color>
+    <color name="yellow">#e1de20</color>
 
     <!--fifty shades of grey-->
     <color name="white">#fff</color>

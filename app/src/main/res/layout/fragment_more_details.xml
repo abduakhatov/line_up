@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/llLowerDetails"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:visibility="visible">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/llGradContainer"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/colorAccent"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cvTopContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="-60dp"
+            android:background="@drawable/round_border"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="4dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:text="General Information"
+                    android:textColor="@color/dark_gray_text"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvOrgName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="sans-serif"
+                    android:gravity="center"
+                    android:paddingBottom="18dp"
+                    android:paddingTop="18dp"
+                    android:text="Passportny Stol M.Ulugbekosogo rayonsssa"
+                    android:textColor="@color/grad_blue_light"
+                    android:textSize="18sp" />
+
+
+                <TextView
+                    android:id="@+id/tvDesctiptionTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="left"
+                    android:text="Desctiption"
+                    android:textColor="@color/dark_gray_text"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvDesctiption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="sans-serif"
+                    android:gravity="left"
+                    android:text="N/A"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+
+                <TextView
+                    android:id="@+id/tvOfficeHoursTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="left"
+                    android:text="Office Hours"
+                    android:textColor="@color/dark_gray_text"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvOfficeHours"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="sans-serif"
+                    android:gravity="left"
+                    android:text="8.00 am - 18.00 pm"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+
+                <TextView
+                    android:id="@+id/tvAddressTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="left"
+                    android:text="Address"
+                    android:textColor="@color/dark_gray_text"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="sans-serif"
+                    android:gravity="left"
+                    android:text="N/A"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tvWebsiteTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="left"
+                    android:text="Website"
+                    android:textColor="@color/dark_gray_text"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvWebsite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="sans-serif"
+                    android:gravity="left"
+                    android:text="N/A"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cvLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/round_border"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:fontFamily="sans-serif"
+                        android:text="Location"
+                        android:textColor="@color/dark_gray_text"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tvDistanceTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="left"
+                        android:text="Distance"
+                        android:textColor="@color/dark_gray_text"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvDistance"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:fontFamily="sans-serif"
+                        android:gravity="left"
+                        android:text="1 km"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/light_gray"
+                    android:src="@mipmap/ic_launcher" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:visibility="gone"
+            android:id="@+id/cvTopContainer3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/round_border"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="sans-serif"
+                    android:text="Comments"
+                    android:textColor="@color/dark_gray_text"
+                    android:textSize="16sp" />
+
+                <uz.wiut.component.utils.ui.customEditText.CustomEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                </uz.wiut.component.utils.ui.customEditText.CustomEditText>
+
+                <Button
+                    android:id="@+id/btnComment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/llWorkingContainer"
+                    android:layout_alignRight="@+id/llWorkingContainer"
+                    android:layout_below="@+id/llWorkingContainer"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/circle_button"
+                    android:fontFamily="sans-serif-light"
+                    android:inputType="textCapSentences"
+                    android:text="Save"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
+
+                <android.support.v4.widget.NestedScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="20dp" />
+                </android.support.v4.widget.NestedScrollView>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+</ScrollView>

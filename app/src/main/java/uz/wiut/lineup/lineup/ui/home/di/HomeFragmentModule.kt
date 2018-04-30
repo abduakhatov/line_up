@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment
 import dagger.Binds
 import dagger.Module
 import uz.wiut.lineup.lineup.dagger.inject.inject.PerFragment
-import uz.wiut.lineup.lineup.ui.home.fragments.HomeFragment
+import uz.wiut.lineup.lineup.ui.home.HomeFragment
 import uz.wiut.lineup.lineup.ui.home.mvp.fragment.HomeFragmentPresenter
 import uz.wiut.lineup.lineup.ui.home.mvp.fragment.HomeFragmentPresenterImpl
 import uz.wiut.lineup.lineup.ui.home.mvp.fragment.HomeFragmentView

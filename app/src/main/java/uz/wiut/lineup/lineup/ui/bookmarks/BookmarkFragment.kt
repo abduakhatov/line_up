@@ -16,19 +16,16 @@ import co.revely.gradient.RevelyGradient
 import uz.wiut.lineup.lineup.R
 import uz.wiut.lineup.lineup.ui.bookmarks.fragments.HistoryOfBookmarksFragment
 import uz.wiut.lineup.lineup.ui.bookmarks.fragments.SavedBookmarkFragment
+import uz.wiut.lineup.lineup.ui.common.fragment.BaseFragment
 import uz.wiut.lineup.lineup.ui.search.adapter.SearchVPAdapter
 import uz.wiut.lineup.lineup.utils.Constants
 
-class BookmarkFragment : Fragment() {
+class BookmarkFragment : BaseFragment() {
 
-    @BindView(R.id.vpSearch)
-    lateinit var vpSearch: ViewPager
-    @BindView(R.id.tlSearch)
-    lateinit var tlSearch: TabLayout
-    @BindView(R.id.llWorkingContainer)
-    lateinit var llWorkingContainer: RelativeLayout
-    @BindView(R.id.llGradContainer)
-    lateinit var llGradContainer: LinearLayout
+    @BindView(R.id.vpSearch) lateinit var vpSearch: ViewPager
+    @BindView(R.id.tlSearch) lateinit var tlSearch: TabLayout
+    @BindView(R.id.llWorkingContainer) lateinit var llWorkingContainer: RelativeLayout
+    @BindView(R.id.llGradContainer) lateinit var llGradContainer: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,25 +33,32 @@ class BookmarkFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-
         val view = inflater.inflate(R.layout.fragment_search, container, false) as View
         ButterKnife.bind(this, view)
-        setUpView()
-        val adapter = SearchVPAdapter(childFragmentManager)
-        adapter.addFragment(SavedBookmarkFragment(), "Saved")
-        adapter.addFragment(HistoryOfBookmarksFragment(), "History")
-        vpSearch.adapter = adapter
-        tlSearch.setupWithViewPager(vpSearch)
-
+        initUI()
         return view
     }
 
-    private fun setUpView() {
+    private fun initUI() {
+        setUpGradient()
+        setUpPager()
+
+    }
+
+    private fun setUpGradient() {
         RevelyGradient.linear()
                 .angle(-45f)
                 .colors(Constants.arrOfColsBelowToolbar)
                 .onBackgroundOf(llGradContainer)
         llWorkingContainer.visibility = ViewGroup.GONE
+    }
+
+    private fun setUpPager() {
+        val adapter = SearchVPAdapter(childFragmentManager)
+        adapter.addFragment(SavedBookmarkFragment(), "Saved")
+        adapter.addFragment(HistoryOfBookmarksFragment(), "History")
+        vpSearch.adapter = adapter
+        tlSearch.setupWithViewPager(vpSearch)
     }
 
     override fun onDetach() {

@@ -1,13 +1,13 @@
-package uz.wiut.lineup.lineup.ui.home.di
+package uz.wiut.lineup.lineup.ui.organizationDetails.di
 
 import android.support.v7.app.AppCompatActivity
 import dagger.Binds
 import dagger.Module
 import uz.wiut.lineup.lineup.dagger.inject.inject.PerActivity
-import uz.wiut.lineup.lineup.ui.home.OrganizationDetailsActivity
-import uz.wiut.lineup.lineup.ui.home.mvp.OrganizationDetailsActivityPresenter
-import uz.wiut.lineup.lineup.ui.home.mvp.OrganizationDetailsActivityPresenterImpl
-import uz.wiut.lineup.lineup.ui.home.mvp.OrganizationDetailsActivityView
+import uz.wiut.lineup.lineup.ui.organizationDetails.OrganizationDetailsActivity
+import uz.wiut.lineup.lineup.ui.organizationDetails.mvp.OrganizationDetailsActivityPresenter
+import uz.wiut.lineup.lineup.ui.organizationDetails.mvp.OrganizationDetailsActivityPresenterImpl
+import uz.wiut.lineup.lineup.ui.organizationDetails.mvp.OrganizationDetailsActivityView
 
 /**
  * Created by Shohruh on 19-Apr-18.

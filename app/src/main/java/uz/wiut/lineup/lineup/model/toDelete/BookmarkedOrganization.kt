@@ -1,4 +1,4 @@
-package uz.wiut.lineup.lineup.model
+package uz.wiut.lineup.lineup.model.toDelete
 
 /**
  * Created by abduakhatov on 2/7/18 at 3:42 PM.

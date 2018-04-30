@@ -85,10 +85,17 @@ class MyProfileFragment : BaseFragment(), MyProfileFragmentView {
         }
     }
 
-    private fun getChanges(){
-        user.isMale = rbnMan.isChecked
-        if(edName.visibility == View.VISIBLE) user.name = edName.getText()
-        user.password = edPassword.getText()
+    private fun getChanges() {
+        var name = ""
+        if (edName.visibility == View.VISIBLE) name = edName.getText()
+        var pass = edPassword.getText()
+
+        if (pass.length < 1 || name.length < 1) return
+
+        user.password = pass
+        user.name = name
+        if (edName.visibility == View.VISIBLE) user.name = name
+        presenter.onDataSave(user)
     }
 
     override fun setData(user: User) {
@@ -111,22 +118,21 @@ class MyProfileFragment : BaseFragment(), MyProfileFragmentView {
     }
 
     @OnCheckedChanged(R.id.rbnMan)
-    fun radioButtonClicked(){
-        if(rbnMan.isChecked) user.isMale = true
+    fun radioButtonClicked() {
+        if (rbnMan.isChecked) user.isMale = true
         else user.isMale = false
         changeGender()
     }
 
     @OnClick(R.id.imEdit)
-    fun onEditClick(){
+    fun onEditClick() {
         rlTvNameContainer.visibility = View.GONE
         edName.visibility = View.VISIBLE
         edName.setText(user.name)
     }
 
     @OnClick(R.id.btnSave)
-    fun onSaveClick(){
+    fun onSaveClick() {
         getChanges()
-        presenter.onDataSave(user)
     }
 }

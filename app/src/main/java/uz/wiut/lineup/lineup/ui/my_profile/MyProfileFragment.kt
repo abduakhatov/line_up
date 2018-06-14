@@ -77,10 +77,10 @@ class MyProfileFragment : BaseFragment(), MyProfileFragmentView {
 
     private fun changeGender() {
         if (user.isMale) {
-            vAvatar.setBackground(ContextCompat.getDrawable(context, R.drawable.ic_man))
+            vAvatar.setBackground(ContextCompat.getDrawable(this.context!!, R.drawable.ic_man))
             rbnMan.isChecked = true
         } else {
-            vAvatar.setBackground(ContextCompat.getDrawable(context, R.drawable.ic_woman))
+            vAvatar.setBackground(ContextCompat.getDrawable(this.context!!, R.drawable.ic_woman))
             rbnWoman.isChecked = true
         }
     }
@@ -108,7 +108,7 @@ class MyProfileFragment : BaseFragment(), MyProfileFragmentView {
     }
 
     override fun message(message: String) {
-        navigator.makeToask(context, message)
+        navigator.makeToask(this.context!!, message)
     }
 
     override fun hideEdNameContainer() {

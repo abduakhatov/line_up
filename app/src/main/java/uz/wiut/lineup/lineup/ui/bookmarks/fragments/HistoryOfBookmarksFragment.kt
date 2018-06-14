@@ -59,7 +59,7 @@ class HistoryOfBookmarksFragment : BaseFragment(), HistoryFragmentView{
     }
 
     private fun initAdapter() {
-        adapter = HistoryFragmentAdapter(this.context, organzationsList, historyList)
+        adapter = HistoryFragmentAdapter(this.context!!, organzationsList, historyList)
         rvSearchList.layoutManager = LinearLayoutManager(this.context)
         rvSearchList.adapter = adapter
         adapter.notifyDataSetChanged()
@@ -79,7 +79,7 @@ class HistoryOfBookmarksFragment : BaseFragment(), HistoryFragmentView{
     }
 
     override fun message(message: String) {
-        navigator.makeToask(context, message)
+        navigator.makeToask(this!!.context!!, message)
     }
 
 }

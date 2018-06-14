@@ -80,7 +80,7 @@ class SignUpFragment : BaseFragment(), SignUpFragmentView {
         setUpGradientBg()
         setETIcons()
 
-        if (!isForSignUp) presenter.onUserVerificationCalledFromSignInFrgmt(auth, activity)
+        if (!isForSignUp) presenter.onUserVerificationCalledFromSignInFrgmt(auth, activity!!)
     }
 
     private fun setUpGradientBg() {
@@ -109,7 +109,7 @@ class SignUpFragment : BaseFragment(), SignUpFragmentView {
         var phone = edPhone.getText()
         var pass = edPassword.text.toString()
 
-        presenter.onSignUpClicked(name, phone, pass, activity)
+        presenter.onSignUpClicked(name, phone, pass, activity!!)
     }
 
     @OnClick(R.id.btnVerify)
@@ -118,7 +118,7 @@ class SignUpFragment : BaseFragment(), SignUpFragmentView {
     }
 
     override fun message(message: String) {
-        navigator.makeToask(context, message)
+        navigator.makeToask(context!!, message)
     }
 
     override fun log(message: String) {

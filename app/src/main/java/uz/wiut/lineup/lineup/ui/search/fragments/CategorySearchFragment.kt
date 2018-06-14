@@ -52,7 +52,7 @@ class CategorySearchFragment : DaggerFragment() , CategorySearchFragmentView{
     }
 
     private fun initAdapter() {
-        val adapter = SeachListAdapter(this.context, getData())
+        val adapter = SeachListAdapter(this.context!!, getData())
         val llManager = LinearLayoutManager(this.context)
         rvSearchList.layoutManager = llManager
         rvSearchList.adapter = adapter

@@ -74,7 +74,7 @@ class HomeFragment : BaseFragment(), HomeFragmentView {
     }
 
     override fun message(message: String) {
-        navigator.makeToask(context, message)
+        navigator.makeToask(this!!.context!!, message)
     }
 
     private fun initUI() {
@@ -88,7 +88,7 @@ class HomeFragment : BaseFragment(), HomeFragmentView {
     }
 
     private fun setUpRecyclerAdapter() {
-        adapter = ActiveListAdapter(this.context, organizationsList, queueList)
+        adapter = ActiveListAdapter(this.context!!, organizationsList, queueList)
         val llManager = LinearLayoutManager(this.context)
         rvActiveQueueList.layoutManager = llManager
         rvActiveQueueList.adapter = adapter
@@ -111,7 +111,7 @@ class HomeFragment : BaseFragment(), HomeFragmentView {
     }
 
     override fun startActivity(organizationDetailsActivity: OrganizationDetailsActivity, orgDetails: OrgDetails) {
-        navigator.startActivityWithBundle(context, organizationDetailsActivity, orgDetails)
+        navigator.startActivityWithBundle(this.context!!, organizationDetailsActivity, orgDetails)
 //        Intent(context, toCall::class.java)
 //        i.putExtra(Constants.ORG_DETAIL, bundle)
 //        context.startActivity(i)

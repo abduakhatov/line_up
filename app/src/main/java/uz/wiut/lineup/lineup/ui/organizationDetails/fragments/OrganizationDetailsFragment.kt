@@ -111,13 +111,13 @@ class OrganizationDetailsFragment : BaseFragment(), OrganizationDetailsFragmentV
     }
 
     private fun isNetworkAvailable(): Boolean {
-        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val connectivityManager = context!!.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetworkInfo = connectivityManager.getActiveNetworkInfo()
         return activeNetworkInfo != null
     }
 
     override fun saved() {
-        navigator.makeToask(context, "Saved")
-        activity.finish()
+        navigator.makeToask(this.context!!, "Saved")
+        activity?.finish()
     }
 }

@@ -62,7 +62,7 @@ class SignInFragment : BaseFragment(), SignInFragmentView {
 
     override fun onDestroy() {
         super.onDestroy()
-        activity.finish()
+        activity!!.finish()
     }
 
     private fun initUI() {
@@ -138,7 +138,7 @@ class SignInFragment : BaseFragment(), SignInFragmentView {
     }
 
     override fun message(message: String) {
-        navigator.makeToask(context, message)
+        navigator.makeToask(this.context!!, message)
     }
 
     override fun onDestroyView() {

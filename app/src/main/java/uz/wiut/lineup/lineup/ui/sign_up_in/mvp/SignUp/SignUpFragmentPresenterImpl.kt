@@ -55,7 +55,7 @@ class SignUpFragmentPresenterImpl : SignUpFragmentPresenter, PhoneAuthProvider.O
         view.showVerification()
     }
 
-    override fun onUserVerificationCalledFromSignInFrgmt(auth : Authentification, activity: Activity) {
+    override fun onUserVerificationCalledFromSignInFrgmt(auth: Authentification, activity: Activity) {
         isCalledFromSignInfragment = true
         mPhone = auth.phone
         mPass = auth.password

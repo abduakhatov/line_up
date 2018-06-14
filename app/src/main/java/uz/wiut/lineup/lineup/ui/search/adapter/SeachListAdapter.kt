@@ -14,12 +14,12 @@ import uz.wiut.lineup.lineup.model.toDelete.Organzatn
 class SeachListAdapter(private val context: Context, private val list: List<Organzatn>)
     : RecyclerView.Adapter<SeachListAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
             = ViewHolder(LayoutInflater.from(parent?.context)
             .inflate(R.layout.item_home_list, parent, false))
 
 
-    override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 //        var org: Organzatn = list.get(position)
 //        holder?.tvNameOfOrg?.text = org.organzatn
 //        holder?.tvLocation?.text = org.location

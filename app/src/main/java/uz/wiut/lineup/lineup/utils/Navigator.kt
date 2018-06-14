@@ -50,10 +50,10 @@ class Navigator {
         context.startActivity(i)
     }
 
-    fun startActivityWithTaskClear(context: Context, toCall: BaseActivity) {
+    fun startActivityWithTaskClear(context: Context?, toCall: BaseActivity) {
         val intent = Intent(context, toCall::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        context.startActivity(intent)
+        context?.startActivity(intent)
     }
 
     fun startForResult(context: Activity, toCall: BaseActivity) {
@@ -89,7 +89,7 @@ class Navigator {
         }
     }
 
-    fun closeFragment(activity: FragmentActivity) {
+    fun closeFragment(activity: FragmentActivity?) {
         if (activity != null) {
             activity.supportFragmentManager.popBackStack()
         }

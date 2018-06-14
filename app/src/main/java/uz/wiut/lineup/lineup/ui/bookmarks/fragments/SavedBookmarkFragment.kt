@@ -61,7 +61,7 @@ class SavedBookmarkFragment : BaseFragment(), SavedFragmentView {
     }
 
     private fun initAdapter() {
-        val adapter = SavedFragmentAdapter(this.context, organzationsList, bookmarkList)
+        val adapter = SavedFragmentAdapter(this.context!!, organzationsList, bookmarkList)
         rvSearchList.layoutManager = LinearLayoutManager(this.context)
         rvSearchList.adapter = adapter
         adapter.notifyDataSetChanged()
@@ -81,7 +81,7 @@ class SavedBookmarkFragment : BaseFragment(), SavedFragmentView {
     }
 
     override fun message(message: String) {
-        navigator.makeToask(context, message)
+        navigator.makeToask(this!!.context!!, message)
     }
 
     override fun onDestroyView() {

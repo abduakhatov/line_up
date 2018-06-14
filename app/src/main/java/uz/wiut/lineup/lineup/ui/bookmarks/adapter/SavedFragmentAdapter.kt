@@ -20,14 +20,14 @@ class SavedFragmentAdapter(
         private var list: ArrayList<Organization>,
         private var orgs: ArrayList<Bookmark>
 ) : RecyclerView.Adapter<BaseViewHolder>(){
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): BaseViewHolder
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder
             = BaseViewHolder(LayoutInflater.from(parent?.context)
             .inflate(R.layout.item_home_list, parent, false))
 
     override fun getItemCount(): Int = list.size
 
 
-    override fun onBindViewHolder(holder: BaseViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
             var org: Organization = list.get(position)
 
 //        holder?.cvActiveQueueItem?.setOnClickListener(View.OnClickListener {

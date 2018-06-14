@@ -27,10 +27,10 @@ class ActiveListAdapter(private val context: Context,
 ) : RecyclerView.Adapter<BaseViewHolder>() {
 
     private var clicked = false
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): BaseViewHolder = BaseViewHolder(LayoutInflater.from(parent?.context)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder = BaseViewHolder(LayoutInflater.from(parent?.context)
             .inflate(R.layout.item_home_list, parent, false))
 
-    override fun onBindViewHolder(holder: BaseViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         var org: Organization = organizationsList.get(position)
         var regedOrg: RegisteredOrganization = registeredOrganizations.get(position)
 

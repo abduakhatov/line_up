@@ -42,7 +42,7 @@ class CitySearchFragment : DaggerFragment(), CitySearchFragmentView{
     }
 
     private fun initAdapter() {
-        val adapter = SeachListAdapter(this.context, getData())
+        val adapter = SeachListAdapter(this.context!!, getData())
         val llManager = LinearLayoutManager(this.context)
         rvSearchList.layoutManager = llManager
         rvSearchList.adapter = adapter

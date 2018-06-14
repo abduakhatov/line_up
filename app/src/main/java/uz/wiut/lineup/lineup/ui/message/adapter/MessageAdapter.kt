@@ -16,11 +16,11 @@ import uz.wiut.lineup.lineup.model.toDelete.Message
 class MessageAdapter(private val context: Context, private val list: List<Message>)
     : RecyclerView.Adapter<MessageAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
             = ViewHolder(LayoutInflater.from(parent?.context)
             .inflate(R.layout.item_messages_list, parent, false))
 
-    override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var msg: Message = list.get(position)
 
         holder?.tvInitials?.text = msg.sender[0].toUpperCase().toString()

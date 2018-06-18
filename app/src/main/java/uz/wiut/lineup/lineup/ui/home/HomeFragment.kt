@@ -1,7 +1,6 @@
 package uz.wiut.lineup.lineup.ui.home
 
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -88,6 +87,27 @@ class HomeFragment : BaseFragment(), HomeFragmentView {
     }
 
     private fun setUpRecyclerAdapter() {
+        val organization = Organization()
+        organization.locationTitle = "Tashkent"
+        organization.oId = "tasb1"
+        organization.address = "Yunusobod 3"
+        organization.categoryTitle = "bnk"
+        organization.isOpen = 1
+        organization.name = "Ipak yo'li"
+        organization.website = "ipakyuli.uz"
+
+        val registeredOrganization = RegisteredOrganization()
+        registeredOrganization.oId = "tasb1"
+        registeredOrganization.peopleWaiting = 3
+        registeredOrganization.averageWaitingTime = 5
+        registeredOrganization.category = "bnk"
+        registeredOrganization.queueId = "dqId1"
+        registeredOrganization.timestamp = 1524537859314
+        registeredOrganization.location = "Tashkent"
+
+        organizationsList.add(organization)
+        queueList.add(registeredOrganization)
+
         adapter = ActiveListAdapter(this.context!!, organizationsList, queueList)
         val llManager = LinearLayoutManager(this.context)
         rvActiveQueueList.layoutManager = llManager

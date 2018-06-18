@@ -1,5 +1,6 @@
 package uz.wiut.lineup.lineup.ui.bookmarks.adapter
 
+import android.app.Activity
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import uz.wiut.lineup.lineup.R
 import uz.wiut.lineup.lineup.model.History
 import uz.wiut.lineup.lineup.model.Organization
 import uz.wiut.lineup.lineup.ui.common.holder.BaseViewHolder
+import uz.wiut.lineup.lineup.ui.organizationDetails.OrganizationDetailsActivity
 import uz.wiut.lineup.lineup.utils.Constants
 
 /**

@@ -1,5 +1,7 @@
 package uz.wiut.lineup.lineup.ui.organizationDetails
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.Toolbar
@@ -37,6 +39,13 @@ class OrganizationDetailsActivity : BaseActivity(), OrganizationDetailsActivityV
     @BindView(R.id.tvToolboxTitle) lateinit var tvToolboxTitle: TextView
 
     private var orgDetails = OrgDetails()
+
+    companion object {
+        fun start(activity: Activity){
+            val intent = Intent(activity, OrganizationDetailsActivity::class.java)
+            activity.startActivity(intent)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

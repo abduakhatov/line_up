@@ -126,6 +126,7 @@ class SignUpFragmentPresenterImpl : SignUpFragmentPresenter, PhoneAuthProvider.O
                         authFailed = false
                         view.log("signInWithCredential:success")
                         view.log("firebase User2 ${user}")
+                        view.startActivity(HomeActivity())
                     } else {
                         authFailed = true
                         view.log("signInWithCredential:failure ${task.getException()}")

@@ -1,5 +1,6 @@
 package uz.wiut.lineup.lineup.ui.home.adapter
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.support.v4.content.ContextCompat
@@ -14,6 +15,7 @@ import uz.wiut.lineup.lineup.model.DailyQueue
 import uz.wiut.lineup.lineup.model.Organization
 import uz.wiut.lineup.lineup.model.RegisteredOrganization
 import uz.wiut.lineup.lineup.ui.common.holder.BaseViewHolder
+import uz.wiut.lineup.lineup.ui.organizationDetails.OrganizationDetailsActivity
 import uz.wiut.lineup.lineup.utils.Constants
 import uz.wiut.lineup.lineup.utils.events.ItemRemove
 import uz.wiut.lineup.lineup.utils.events.OrgDetails
@@ -81,6 +83,11 @@ class ActiveListAdapter(private val context: Context,
         holder!!.cvActiveQueueItem.setOnClickListener({ view ->
             Log.d(Constants.DEBUG, "ActiveList adapter -> " + position)
             RxBus2.publish(RxBus2.ITEM_DELETE, OrgDetails(org, regedOrg))
+        })
+        holder.itemView.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                OrganizationDetailsActivity.start(context as Activity)
+            }
         })
     }
 

@@ -102,7 +102,7 @@
                 android:layout_weight="1"
                 android:fontFamily="sans-serif-light"
                 android:gravity="right"
-                android:text="N/A"
+                android:text="13"
                 android:textColor="@color/grad_blue_light"
                 android:textSize="22sp" />
         </LinearLayout>

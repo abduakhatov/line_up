@@ -66,7 +66,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="14" />
+                            android:text="1" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -82,7 +82,7 @@
                             android:background="@drawable/circle_button"
                             android:fontFamily="sans-serif-light"
                             android:inputType="textCapSentences"
-                            android:text="Sign In"
+                            android:text="Add new"
                             android:textColor="@color/white"
                             android:textSize="14sp"
                             android:visibility="visible" />
@@ -116,7 +116,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="14" />
+                            android:text="1" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -139,7 +139,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="14" />
+                            android:text="0" />
                     </LinearLayout>
 
                 </LinearLayout>

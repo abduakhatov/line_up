@@ -1,6 +1,5 @@
 package uz.wiut.lineup.lineup.ui.sign_up_in.fragments
 
-
 import android.os.Bundle
 import android.text.InputType
 import android.util.Log
@@ -23,7 +22,6 @@ import uz.wiut.lineup.lineup.ui.sign_up_in.mvp.SignUp.SignUpFragmentPresenterImp
 import uz.wiut.lineup.lineup.ui.sign_up_in.mvp.SignUp.SignUpFragmentView
 import uz.wiut.lineup.lineup.utils.Constants
 import javax.inject.Inject
-
 
 class SignUpFragment : BaseFragment(), SignUpFragmentView {
 
@@ -144,8 +142,6 @@ class SignUpFragment : BaseFragment(), SignUpFragmentView {
     }
 
     override fun closeFragment() {
-        navigator.closeFragment(activity)
+        navigator.closeFragment(activity!!)
     }
-
-
 }

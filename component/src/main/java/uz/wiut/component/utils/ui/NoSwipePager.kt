@@ -11,8 +11,9 @@ import android.view.MotionEvent
 class NoSwipePager : ViewPager {
     var enable: Boolean = false
 
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs){
-        this.enable = true;
+    constructor(context: Context?, attrs: AttributeSet?)
+            : super(context!!, attrs){
+        this.enable = true
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {

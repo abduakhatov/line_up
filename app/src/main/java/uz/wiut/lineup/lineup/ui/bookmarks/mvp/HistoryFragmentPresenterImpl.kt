@@ -39,12 +39,12 @@ class HistoryFragmentPresenterImpl : HistoryFragmentPresenter {
     }
 
     private fun loadHistoryData() {
-        dbHistoryRef.child(uid).addListenerForSingleValueEvent(object : ValueEventListener {
+        dbHistoryRef.child(uid!!).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (!dataSnapshot.hasChildren()) return
                 histories.clear()
                 for (postSnapshot in dataSnapshot.children) {
-                    var data = dataSnapshot.child(postSnapshot.key).getValue<History>(History::class.java)
+                    var data = dataSnapshot.child(postSnapshot.key!!).getValue<History>(History::class.java)
                     data?.historyId = postSnapshot.key
                     histories.add(data!!)
                 }

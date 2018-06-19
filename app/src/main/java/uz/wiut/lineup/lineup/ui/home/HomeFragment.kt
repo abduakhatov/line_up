@@ -11,17 +11,22 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import butterknife.BindView
 import butterknife.ButterKnife
+import butterknife.OnClick
 import co.revely.gradient.RevelyGradient
+import uz.wiut.component.utils.RxBus2
 import uz.wiut.lineup.lineup.R
 import uz.wiut.lineup.lineup.model.Organization
 import uz.wiut.lineup.lineup.model.RegisteredOrganization
+import uz.wiut.lineup.lineup.model.toDelete.Organzatn
 import uz.wiut.lineup.lineup.ui.common.fragment.BaseFragment
 import uz.wiut.lineup.lineup.ui.home.adapter.ActiveListAdapter
 import uz.wiut.lineup.lineup.ui.home.mvp.fragment.HomeFragmentPresenterImpl
 import uz.wiut.lineup.lineup.ui.home.mvp.fragment.HomeFragmentView
+import uz.wiut.lineup.lineup.ui.main.HomeActivity
 import uz.wiut.lineup.lineup.ui.organizationDetails.OrganizationDetailsActivity
 import uz.wiut.lineup.lineup.utils.Constants
 import uz.wiut.lineup.lineup.utils.events.OrgDetails
+import java.util.function.Consumer
 import javax.inject.Inject
 
 
@@ -33,12 +38,21 @@ class HomeFragment : BaseFragment(), HomeFragmentView {
     @BindView(R.id.llGradContainer) lateinit var llGradContainer: LinearLayout
     @BindView(R.id.rvActiveQueueList) lateinit var rvActiveQueueList: RecyclerView
 
-
     private var organizationsList = arrayListOf<Organization>()
     private var queueList = arrayListOf<RegisteredOrganization>()
     private lateinit var adapter: ActiveListAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) = super.onCreate(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        RxBus2.subscribe(RxBus2.REGISTER_ITEM_ADDED, this,
+                io.reactivex.functions.Consumer {
+                    if (it is OrgDetails) {
+                        organizationsList.add(0, it.org!!)
+                        queueList.add(0, it.regedOrg!!)
+                        adapter.notifyDataSetChanged()
+                    }
+                })
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -53,18 +67,18 @@ class HomeFragment : BaseFragment(), HomeFragmentView {
 
     override fun onResume() {
         super.onResume()
-        adapter.notifyDataSetChanged()
+//        adapter.notifyDataSetChanged()
     }
 
     override fun setOrganizationData(organizationsList: ArrayList<Organization>) {
         this.organizationsList = organizationsList
-        setUpRecyclerAdapter()
+//        setUpRecyclerAdapter()
     }
 
     override fun setQueueData(queueList: ArrayList<RegisteredOrganization>) {
         this.queueList = queueList
 //        adapter.notifyDataSetChanged()
-        setUpRecyclerAdapter()
+//        setUpRecyclerAdapter()
     }
 
 
@@ -98,15 +112,17 @@ class HomeFragment : BaseFragment(), HomeFragmentView {
 
         val registeredOrganization = RegisteredOrganization()
         registeredOrganization.oId = "tasb1"
-        registeredOrganization.peopleWaiting = 3
+        registeredOrganization.peopleWaiting = 1
         registeredOrganization.averageWaitingTime = 5
         registeredOrganization.category = "bnk"
         registeredOrganization.queueId = "dqId1"
         registeredOrganization.timestamp = 1524537859314
         registeredOrganization.location = "Tashkent"
 
-        organizationsList.add(organization)
-        queueList.add(registeredOrganization)
+        if (organizationsList.isEmpty()) {
+            organizationsList.add(organization)
+            queueList.add(registeredOrganization)
+        }
 
         adapter = ActiveListAdapter(this.context!!, organizationsList, queueList)
         val llManager = LinearLayoutManager(this.context)
@@ -128,6 +144,13 @@ class HomeFragment : BaseFragment(), HomeFragmentView {
     override fun onDestroyView() {
         super.onDestroyView()
         presenter.onDestroy()
+    }
+
+    @OnClick(R.id.btnSignIn2)
+    fun clickAddNew() {
+        if (activity is HomeActivity) {
+            (activity as HomeActivity).openSearchPage()
+        }
     }
 
     override fun startActivity(organizationDetailsActivity: OrganizationDetailsActivity, orgDetails: OrgDetails) {

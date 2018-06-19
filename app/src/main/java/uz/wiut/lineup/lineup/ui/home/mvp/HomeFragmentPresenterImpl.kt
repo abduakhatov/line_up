@@ -47,7 +47,7 @@ class HomeFragmentPresenterImpl : HomeFragmentPresenter {
                 if (!dataSnapshot.hasChildren()) return
                 queuesReged.clear()
                 for (postSnapshot in dataSnapshot.children) {
-                    var data = dataSnapshot.child(postSnapshot.key).getValue<RegisteredOrganization>(RegisteredOrganization::class.java)
+                    var data = dataSnapshot.child(postSnapshot.key!!).getValue<RegisteredOrganization>(RegisteredOrganization::class.java)
                     data?.queueId = dataSnapshot.key
                     queuesReged.add(data!!)
 

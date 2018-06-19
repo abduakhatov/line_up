@@ -8,12 +8,68 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:155889892836:android:fb90a6e321d0ce35",
+        "android_client_info": {
+          "package_name": "lineup.wiut.uz.onliniaclient"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "155889892836-qenqdeka0644h8evk4pqc2ssvhg8d77j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "lineup.wiut.uz.onliniaclient",
+            "certificate_hash": "4c9af8c2630259d03a03c6681f767762ee835d2a"
+          }
+        },
+        {
+          "client_id": "155889892836-2849ijrl4fgvkjiml2kk503hrt9m50ng.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "155889892836-2849ijrl4fgvkjiml2kk503hrt9m50ng.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoGDQU9GL1rHMQstn3aXuRaW2GBHfiSn4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "155889892836-2849ijrl4fgvkjiml2kk503hrt9m50ng.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:155889892836:android:361f6bf145b673e3",
         "android_client_info": {
           "package_name": "uz.wiut.lineup.lineup"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "155889892836-8qfdd02qel5b8edljjdut276s9g1khj4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uz.wiut.lineup.lineup",
+            "certificate_hash": "1383dfaf4c78cab413affb9e0662ea48b2a553bd"
+          }
+        },
         {
           "client_id": "155889892836-nscshha6prs1mvsntue803avobikc8ti.apps.googleusercontent.com",
           "client_type": 1,
@@ -29,6 +85,10 @@
             "package_name": "uz.wiut.lineup.lineup",
             "certificate_hash": "67112cde8e87ae5f370139346b64ab62c43da9bf"
           }
+        },
+        {
+          "client_id": "155889892836-2849ijrl4fgvkjiml2kk503hrt9m50ng.apps.googleusercontent.com",
+          "client_type": 3
         },
         {
           "client_id": "155889892836-2849ijrl4fgvkjiml2kk503hrt9m50ng.apps.googleusercontent.com",

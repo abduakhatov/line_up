@@ -29,64 +29,67 @@ class ActiveListAdapter(private val context: Context,
 ) : RecyclerView.Adapter<BaseViewHolder>() {
 
     private var clicked = false
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder = BaseViewHolder(LayoutInflater.from(parent?.context)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder = BaseViewHolder(LayoutInflater.from(parent.context)
             .inflate(R.layout.item_home_list, parent, false))
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         var org: Organization = organizationsList.get(position)
         var regedOrg: RegisteredOrganization = registeredOrganizations.get(position)
 
-        holder?.tvLocation?.visibility = View.VISIBLE
-        holder?.tvOpenClosed?.visibility = View.VISIBLE
-        holder?.ivBookmark?.visibility = View.VISIBLE
-        holder?.tvNameOfOrg?.visibility = View.VISIBLE
-        holder?.tvApproximateTime?.visibility = View.VISIBLE
-        holder?.tvWaitingPeople?.visibility = View.VISIBLE
-        holder?.llTitleContainer?.visibility = View.VISIBLE
+        holder.tvLocation.visibility = View.VISIBLE
+        holder.tvOpenClosed.visibility = View.VISIBLE
+        holder.ivBookmark.visibility = View.VISIBLE
+        holder.tvNameOfOrg.visibility = View.VISIBLE
+        holder.tvApproximateTime.visibility = View.VISIBLE
+        holder.tvWaitingPeople.visibility = View.VISIBLE
+        holder.llTitleContainer.visibility = View.VISIBLE
 
-        holder?.tvLocation?.text = org.locationTitle
+        holder.tvLocation.text = org.locationTitle
         when (org.isOpen) {
             -1 -> {
-                holder?.tvOpenClosed?.text = Constants.CLOSED
-                holder?.tvOpenClosed?.setTextColor(Color.RED)
+                holder.tvOpenClosed.text = Constants.CLOSED
+                holder.tvOpenClosed.setTextColor(Color.RED)
             }
             0 -> {
-                holder?.tvOpenClosed?.text = Constants.BREAK
-                holder?.tvOpenClosed?.setTextColor(Color.YELLOW)
+                holder.tvOpenClosed.text = Constants.BREAK
+                holder.tvOpenClosed.setTextColor(Color.YELLOW)
             }
             1 -> {
-                holder?.tvOpenClosed?.text = Constants.OPEN
-                holder?.tvOpenClosed?.setTextColor(Color.GREEN)
+                holder.tvOpenClosed.text = Constants.OPEN
+                holder.tvOpenClosed.setTextColor(Color.GREEN)
             }
         }
 
-        holder?.ivBookmark?.setOnClickListener({
+        holder.ivBookmark.setOnClickListener({
             if (clicked) {
-                holder?.ivBookmark?.setImageResource(R.drawable.ic_like)
+                holder.ivBookmark.setImageResource(R.drawable.ic_like)
                 RxBus2.publish(RxBus2.ITEM_DELETE, ItemRemove(position, true)) //todo
                 notifyItemChanged(position)
                 clicked = false
             } else {
-                holder?.ivBookmark?.setImageResource(R.drawable.ic_liked)
+                holder.ivBookmark.setImageResource(R.drawable.ic_liked)
                 RxBus2.publish(RxBus2.ITEM_DELETE, ItemRemove(position, false)) // todo
                 notifyItemChanged(position)
                 clicked = true
             }
         })
 
-        holder?.tvNameOfOrg?.text = org.name
-        holder?.llHistoryContainer?.visibility = View.GONE
-        var peopleCount = regedOrg.peopleWaiting
-        holder?.tvWaitingPeople?.text  = peopleCount.toString()
-        holder?.tvApproximateTime?.text = (regedOrg.averageWaitingTime * peopleCount!!).toString()
+        holder.tvNameOfOrg.text = org.name
+        holder.llHistoryContainer.visibility = View.GONE
+        var peopleCount = regedOrg.peopleWaiting + 1
+        holder.tvWaitingPeople.text  = peopleCount.toString()
+        holder.tvApproximateTime.text = (regedOrg.averageWaitingTime * (peopleCount - 1)!!).toString() + " min"
 
-        holder!!.cvActiveQueueItem.setOnClickListener({ view ->
+        holder.cvActiveQueueItem.setOnClickListener({ view ->
             Log.d(Constants.DEBUG, "ActiveList adapter -> " + position)
             RxBus2.publish(RxBus2.ITEM_DELETE, OrgDetails(org, regedOrg))
         })
         holder.itemView.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                OrganizationDetailsActivity.start(context as Activity)
+            override fun onClick(v: View) {
+                val orgDetails = OrgDetails()
+                orgDetails.regedOrg = registeredOrganizations.get(position)
+                orgDetails.org = organizationsList.get(position)
+                OrganizationDetailsActivity.startAlreadyRegistered(context as Activity, orgDetails)
             }
         })
     }

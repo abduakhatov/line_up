@@ -21,18 +21,17 @@ class SignUpFragmentPresenterImpl : SignUpFragmentPresenter, PhoneAuthProvider.O
     @Inject
     lateinit var view: SignUpFragmentView
 
-    private var mAuth: FirebaseAuth? = null
+    private var mAuth: FirebaseAuth
     private var dbRef: DatabaseReference
     private var dbClients: DatabaseReference
     private var mResendToken: PhoneAuthProvider.ForceResendingToken? = null
     private var authFailed = false
     private var isCalledFromSignInfragment = false
-    private lateinit var mVerificationId: String
+    private var mVerificationId: String? = null
     private lateinit var activity: Activity
     private lateinit var mName: String
     private var mPhone: String? = null
     private var mPass: String? = null
-
 
     @Inject
     constructor() {
@@ -67,7 +66,7 @@ class SignUpFragmentPresenterImpl : SignUpFragmentPresenter, PhoneAuthProvider.O
     private fun sendCode() {
         mAuth = FirebaseAuth.getInstance()
 //        if (uid == null || mAuth == null)
-        mAuth?.signOut()
+//        mAuth?.signOut()
 //        var uid = mAuth?.currentUser?.uid
 
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
@@ -84,7 +83,7 @@ class SignUpFragmentPresenterImpl : SignUpFragmentPresenter, PhoneAuthProvider.O
             view.message("Code cannot be empty")
             return
         }
-        verifyPhoneNumberWithCode(mVerificationId, code)
+        verifyPhoneNumberWithCode(mVerificationId!!, code)
         if (authFailed) return
         if (isCalledFromSignInfragment) verifyPassword()
         else pushPassword()
@@ -165,7 +164,8 @@ class SignUpFragmentPresenterImpl : SignUpFragmentPresenter, PhoneAuthProvider.O
         user.name = mName
         user.password = mPass
 
-        var currentUser = mAuth?.currentUser?.uid
+        var currentUser = mAuth.currentUser!!.uid
+
         dbClients.child("${currentUser}").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) return

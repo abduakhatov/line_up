@@ -66,7 +66,7 @@ class SignInFragmentPresenterImpl : SignInFragmentPresenter {
 
         view.log("uid -> ${uid.toString()}")
 
-        dbUsersRef.child(mAuth.currentUser?.uid).addListenerForSingleValueEvent(object : ValueEventListener {
+        dbUsersRef.child(mAuth.currentUser?.uid!!).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val user = dataSnapshot.getValue<User>(User::class.java)
                 view.log("Sign In Fragme db listner - IN")

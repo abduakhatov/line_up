@@ -48,12 +48,12 @@ class SavedFragmentPresenterImpl : SavedFragmentPresenter {
 
 
     private fun loadBookMarkData() {
-        dbBookmarkRef.child(uid).addListenerForSingleValueEvent(object : ValueEventListener {
+        dbBookmarkRef.child(uid!!).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (!dataSnapshot.hasChildren()) return
                 bookmarks.clear()
                 for (postSnapshot in dataSnapshot.children) {
-                    var data = dataSnapshot.child(postSnapshot.key).getValue<Bookmark>(Bookmark::class.java)
+                    var data = dataSnapshot.child(postSnapshot.key!!).getValue<Bookmark>(Bookmark::class.java)
                     data?.bookmarkId = postSnapshot.key
                     bookmarks.add(data!!)
                 }
@@ -70,8 +70,8 @@ class SavedFragmentPresenterImpl : SavedFragmentPresenter {
 
     private fun loadOrganizationData() {
         orgs.clear()
-        var count = bookmarks.count() -1
-        for (j in 0 .. count) {
+        var count = bookmarks.count() - 1
+        for (j in 0..count) {
             var i = bookmarks[j]
             dbOrganizationRef.child("${i.location}/${i.category}/${i.oId}").addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -99,19 +99,21 @@ class SavedFragmentPresenterImpl : SavedFragmentPresenter {
         var todayL = Constants.getTimestamp()
     }
 
-    fun removeItemFromDb(postion: Int){
-        dbBookmarkRef.child(uid).child(bookmarks[postion].bookmarkId).removeValue()
-        view.log("******item removed")
+    fun removeItemFromDb(postion: Int) {
+        if (bookmarks.size > postion) {
+            dbBookmarkRef.child(uid!!).child(bookmarks[postion].bookmarkId!!).removeValue()
+            view.log("******item removed")
+        }
     }
 
-    override fun onDestroy(){
+    override fun onDestroy() {
         RxBus2.unregister(this)
     }
 
     override fun subscribeRxBus() {
         RxBus2.subscribe(RxBus2.ITEM_DELETE, this, Consumer { o ->
             if (o is ItemRemove) {
-                removeItemFromDb(o.postion)
+                if ((o as ItemRemove).isToRemove) removeItemFromDb(o.postion)
             }
         })
     }

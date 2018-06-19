@@ -115,6 +115,10 @@ class HomeActivity : BaseActivity(), HomeActivityView {
         return ContextCompat.getColor(this, color)
     }
 
+    public fun openSearchPage() {
+        bottomNavigation.setCurrentItem(1)
+    }
+
     private fun changeFragment(fragment: Fragment) {
         if (fragment != null) {
             supportFragmentManager

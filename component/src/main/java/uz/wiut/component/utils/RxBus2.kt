@@ -18,14 +18,14 @@ class RxBus2 {
     constructor()
 
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef(SUBJECT_MY_SUBJECT.toLong(), SUBJECT_ANOTHER_SUBJECT.toLong(), CHANGE_SEARCH_DATA.toLong(), CHANGE_USER_DATA.toLong(), VEHICLE_DATA.toLong())
+    @IntDef(SUBJECT_MY_SUBJECT, SUBJECT_ANOTHER_SUBJECT, CHANGE_SEARCH_DATA,
+            CHANGE_USER_DATA, VEHICLE_DATA, REGISTER_ITEM_ADDED )
     internal annotation class Subject
 
     companion object {
 
         private val sSubjectMap = SparseArray<PublishSubject<Any>>()
         private val sSubscriptionsMap = HashMap<Any, CompositeDisposable>()
-
 
         const val SUBJECT_MY_SUBJECT = 0
         const val SUBJECT_ANOTHER_SUBJECT = 1
@@ -40,6 +40,7 @@ class RxBus2 {
         const val CHANGE_FRAGMENT = 5
         const val SIGN_IN = 6
         const val ITEM_DELETE = 7
+        const val REGISTER_ITEM_ADDED = 8
 
         /**
          * Get the subject or create it if it's not already in memory.

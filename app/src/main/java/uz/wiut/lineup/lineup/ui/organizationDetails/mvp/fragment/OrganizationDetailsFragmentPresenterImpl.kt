@@ -41,13 +41,13 @@ class OrganizationDetailsFragmentPresenterImpl : OrganizationDetailsFragmentPres
         if (!networkAvailable) sendSMS(org.locationTitle, org.categoryTitle, org.oId)
 
         dbRef.child("usersList/clients/${uid}").addListenerForSingleValueEvent(object : ValueEventListener {//todo look at path
-            override fun onDataChange(p0: DataSnapshot?) {
+            override fun onDataChange(p0: DataSnapshot ) {
                 if (p0 == null) return
                 user = p0.getValue<User>(User::class.java)!!
                 saveQueueData()
             }
 
-            override fun onCancelled(p0: DatabaseError?) {
+            override fun onCancelled(p0: DatabaseError ) {
 
             }
         })
@@ -74,7 +74,7 @@ class OrganizationDetailsFragmentPresenterImpl : OrganizationDetailsFragmentPres
 
         var historyUrl = "histories/${uid}"
         var key = dbRef.child(historyUrl).push().key
-        dbRef.child(historyUrl).child(key).setValue(history)
+        dbRef.child(historyUrl).child(key!!).setValue(history)
 
         saveToUsersList()
     }

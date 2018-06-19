@@ -28,7 +28,7 @@ class MyProfileFragmentPresenterImpl : MyProfileFragmentPresenter{
     override fun loadData() {
 
         view.log("uid -> ${uid.toString()}")
-        dbUsersRef.child(mAuth?.currentUser?.uid).addListenerForSingleValueEvent(object : ValueEventListener {
+        dbUsersRef.child(mAuth?.currentUser?.uid!!).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 view.log("##### My prifile Fragme db listner - IN")
                 val user = dataSnapshot.getValue<User>(User::class.java)
@@ -44,7 +44,7 @@ class MyProfileFragmentPresenterImpl : MyProfileFragmentPresenter{
     }
 
     override fun onDataSave(user: User) {
-        dbUsersRef.child(uid).setValue(user)
+        dbUsersRef.child(uid!!).setValue(user)
         view.hideEdNameContainer()
         view.message("Updated!")
         view.log("Updated!")

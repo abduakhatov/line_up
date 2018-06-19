@@ -25,7 +25,9 @@ import javax.inject.Inject
 import android.content.Context.CONNECTIVITY_SERVICE
 import android.net.ConnectivityManager
 import co.revely.gradient.RevelyGradient
+import uz.wiut.component.utils.RxBus2
 import uz.wiut.lineup.lineup.model.Organization
+import uz.wiut.lineup.lineup.model.RegisteredOrganization
 import uz.wiut.lineup.lineup.ui.common.fragment.BaseFragment
 
 
@@ -65,17 +67,6 @@ class OrganizationDetailsFragment : BaseFragment(), OrganizationDetailsFragmentV
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_organization_details, container, false)
         ButterKnife.bind(this, view)
-        orgDetails = OrgDetails()
-        val organization = Organization()
-        organization.locationTitle = "Tashkent"
-        organization.oId = "tasb1"
-        organization.address = "Yunusobod 3"
-        organization.categoryTitle = "bnk"
-        organization.isOpen = 1
-        organization.name = "Ipak yo'li"
-        organization.website = "ipakyuli.uz"
-
-        orgDetails.org =
         init()
         return view
     }
@@ -95,6 +86,9 @@ class OrganizationDetailsFragment : BaseFragment(), OrganizationDetailsFragmentV
         tvApproximateTime.text = (regOrg.peopleWaiting * regOrg.averageWaitingTime).toString()
 
         tvApproximateTime2.text = calculateApproximateTime()
+        if (org.isOpen == 0) {
+            btnRegister.visibility = View.INVISIBLE
+        }
     }
 
     @OnClick(R.id.btnRegister)
@@ -128,6 +122,7 @@ class OrganizationDetailsFragment : BaseFragment(), OrganizationDetailsFragmentV
     }
 
     override fun saved() {
+        RxBus2.publish(RxBus2.REGISTER_ITEM_ADDED, orgDetails)
         navigator.makeToask(this.context!!, "Saved")
         activity?.finish()
     }

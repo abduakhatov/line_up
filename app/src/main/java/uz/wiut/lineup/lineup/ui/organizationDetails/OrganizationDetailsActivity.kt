@@ -27,7 +27,7 @@ import uz.wiut.lineup.lineup.utils.events.ChangeFragment
 import uz.wiut.lineup.lineup.utils.events.OrgDetails
 import javax.inject.Inject
 import android.support.v4.app.NotificationCompat.getExtras
-
+import uz.wiut.lineup.lineup.model.RegisteredOrganization
 
 
 class OrganizationDetailsActivity : BaseActivity(), OrganizationDetailsActivityView {
@@ -41,10 +41,18 @@ class OrganizationDetailsActivity : BaseActivity(), OrganizationDetailsActivityV
     private var orgDetails = OrgDetails()
 
     companion object {
-        fun start(activity: Activity){
+        fun start(activity: Activity, regOrg: OrgDetails){
             val intent = Intent(activity, OrganizationDetailsActivity::class.java)
+            intent.putExtra(Constants.ORG_DETAIL, regOrg)
             activity.startActivity(intent)
         }
+        fun startAlreadyRegistered(activity: Activity, regOrg: OrgDetails){
+            val intent = Intent(activity, OrganizationDetailsActivity::class.java)
+            regOrg.org!!.isOpen = 0
+            intent.putExtra(Constants.ORG_DETAIL, regOrg)
+            activity.startActivity(intent)
+        }
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -102,6 +110,10 @@ class OrganizationDetailsActivity : BaseActivity(), OrganizationDetailsActivityV
     override fun onDestroy() {
         super.onDestroy()
         RxBus2.unregister(this)
+    }
+
+    override fun onBackPressed() {
+        finish()
     }
 
 }
